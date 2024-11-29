@@ -1,0 +1,86 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "nombre": "Smartphone Galaxy S23",
+            "imagen": "https://example.com/images/galaxy-s23.jpg",
+            "precio": 899.99,
+            "marca": "Samsung",
+            "descripcion": "Un smartphone de alto rendimiento con cámara de calidad profesional y pantalla AMOLED."
+          },
+          {
+            "id": 2,
+            "nombre": "Auriculares Bluetooth QuietComfort 45",
+            "imagen": "https://example.com/images/quietcomfort-45.jpg",
+            "precio": 329.99,
+            "marca": "Bose",
+            "descripcion": "Auriculares con cancelación activa de ruido y sonido nítido, ideales para música y llamadas."
+          },
+          {
+            "id": 3,
+            "nombre": "Laptop MacBook Air M2",
+            "imagen": "https://example.com/images/macbook-air-m2.jpg",
+            "precio": 1199.00,
+            "marca": "Apple",
+            "descripcion": "Laptop ultradelgada con chip M2, rendimiento excepcional y batería de larga duración."
+          },
+          {
+            "id": 4,
+            "nombre": "Smart TV OLED 55 pulgadas",
+            "imagen": "https://example.com/images/oled-tv-55.jpg",
+            "precio": 1399.99,
+            "marca": "LG",
+            "descripcion": "Televisor OLED con resolución 4K, colores vibrantes y soporte para Dolby Vision y Atmos."
+          },
+          {
+            "id": 5,
+            "nombre": "Reloj Inteligente Series 8",
+            "imagen": "https://example.com/images/series-8-watch.jpg",
+            "precio": 499.99,
+            "marca": "Apple",
+            "descripcion": "Reloj inteligente con seguimiento de salud, GPS y notificaciones al instante."
+          },
+          {
+            "id": 6,
+            "nombre": "Cámara Digital Alpha 7 IV",
+            "imagen": "https://example.com/images/alpha-7-iv.jpg",
+            "precio": 2499.00,
+            "marca": "Sony",
+            "descripcion": "Cámara full-frame con enfoque automático avanzado y grabación de video 4K."
+          },
+          {
+            "id": 7,
+            "nombre": "Parrilla Eléctrica BBQ Pro",
+            "imagen": "https://example.com/images/bbq-pro.jpg",
+            "precio": 199.99,
+            "marca": "Tefal",
+            "descripcion": "Parrilla eléctrica compacta con control de temperatura y fácil limpieza."
+          },
+          {
+            "id": 8,
+            "nombre": "Mochila Antirrobo TravelPro",
+            "imagen": "https://example.com/images/travelpro-backpack.jpg",
+            "precio": 79.99,
+            "marca": "Samsonite",
+            "descripcion": "Mochila espaciosa con diseño antirrobo y múltiples compartimentos."
+          },
+          {
+            "id": 9,
+            "nombre": "Tablet Galaxy Tab S8",
+            "imagen": "https://example.com/images/galaxy-tab-s8.jpg",
+            "precio": 749.99,
+            "marca": "Samsung",
+            "descripcion": "Tablet con pantalla de alta resolución, soporte para S Pen y conectividad 5G."
+          },
+          {
+            "id": 10,
+            "nombre": "Consola PlayStation 5",
+            "imagen": "https://example.com/images/ps5.jpg",
+            "precio": 499.99,
+            "marca": "Sony",
+            "descripcion": "Consola de última generación con gráficos 4K y una amplia biblioteca de juegos."
+          }
+    ]
+    
+}
+  
