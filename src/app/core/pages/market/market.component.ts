@@ -2,25 +2,45 @@ import { Component } from '@angular/core';
 import { AppLayoutModule } from '../../../layout/app.layout.module';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-
+import { MenuItem } from 'primeng/api';
+import { MenubarModule } from 'primeng/menubar';
 @Component({
   selector: 'app-market',
   standalone: true,
-  imports: [AppLayoutModule, CommonModule, ButtonModule],
+  imports: [AppLayoutModule, CommonModule, ButtonModule, MenubarModule],
   templateUrl: './market.component.html',
   styleUrl: './market.component.css'
 })
 export class MarketComponent {
-    // Definir la propiedad showModal para controlar la visibilidad del modal
-    showModal: boolean = false;
+  items: MenuItem[];
 
-    // Método para abrir el modal
-    openModal() {
-      this.showModal = true;
-    }
-  
-    // Método para cerrar el modal
-    closeModal() {
-      this.showModal = false;
-    }
+  constructor() {
+    this.items = [
+      {
+        label: 'Inicio',
+        icon: 'pi pi-home',
+        routerLink: '/home'
+      },
+      {
+        label: 'Productos',
+        icon: 'pi pi-box',
+        routerLink: '/productos'
+      },
+      {
+        label: 'Ofertas',
+        icon: 'pi pi-tags',
+        routerLink: '/ofertas'
+      },
+      {
+        label: 'Mi cuenta',
+        icon: 'pi pi-user',
+        routerLink: '/mi-cuenta'
+      },
+      {
+        label: 'Carrito',
+        icon: 'pi pi-shopping-cart',
+        routerLink: '/carrito'
+      }
+    ];
+  }
 }

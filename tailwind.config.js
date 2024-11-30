@@ -3,7 +3,11 @@ module.exports = {
     "./src/**/*.{html,ts}",  // Asegura que Tailwind escanee todos los archivos HTML y TypeScript
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        jade: '#00A86B', // El color jade en formato hexadecimal
+      },
+    },
   },
   plugins: [],
 }
