@@ -11,5 +11,16 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './market.component.css'
 })
 export class MarketComponent {
+    // Definir la propiedad showModal para controlar la visibilidad del modal
+    showModal: boolean = false;
 
+    // Método para abrir el modal
+    openModal() {
+      this.showModal = true;
+    }
+  
+    // Método para cerrar el modal
+    closeModal() {
+      this.showModal = false;
+    }
 }

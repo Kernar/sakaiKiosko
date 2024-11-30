@@ -7,3 +7,10 @@
 @import "primeicons/primeicons.css";
 
 @import "../node_modules/primeflex/primeflex.css";
+
+
+/* src/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
