@@ -1,0 +1,70 @@
+<div class="flex justify-center items-center min-h-screen bg-jade-100">
+    <div class="card p-6 w-full max-w-md">
+      <!-- Icono centrado encima del título -->
+      <div class="flex justify-center mb-4">
+        <i class="pi pi-user text-4xl text-jade-600"></i>
+      </div>
+  
+      <h2 class="text-center text-3xl font-semibold mb-6 text-jade-800">Login</h2>
+  
+      <!-- Formulario de Login -->
+      <form pFormGroup (ngSubmit)="onSubmit()">
+        <div class="field mb-4">
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <input
+            id="username"
+            type="text"
+            pInputText
+            [(ngModel)]="username"
+            name="username"
+            placeholder="Ingrese su usuario"
+            class="w-full mt-1 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500"
+            required
+          />
+          <small class="p-error" *ngIf="submitted && !username">Usuario es requerido.</small>
+        </div>
+  
+        <div class="field mb-4 relative">
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input
+            id="password"
+            [type]="passwordVisible ? 'text' : 'password'"
+            pInputText
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Ingrese su contraseña"
+            class="w-full mt-1 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500"
+            required
+          />
+          <!-- Icono para mostrar/ocultar contraseña -->
+          <i
+            class="pi pi-eye absolute right-6 top-1/2 transform -translate-y-1/2 cursor-pointer"
+            (click)="togglePasswordVisibility()"
+          ></i>
+          <small class="p-error" *ngIf="submitted && !password">Contraseña es requirida.</small>
+        </div>
+  
+        <!-- Recuerdame y Olvidaste tu contraseña -->
+        <div class="flex justify-between items-center mb-6">
+          <div class="flex items-center">
+            <input type="checkbox" id="rememberMe" [(ngModel)]="rememberMe" class="mr-2" />
+            <label for="rememberMe" class="text-sm text-gray-700">Recuerdame</label>
+          </div>
+          <a href="#" class="text-sm text-blue-500 hover:text-blue-700">Olvidaste tu contraseña?</a>
+        </div>
+  
+        <!-- Botón de Login -->
+        <div class="mt-5">
+          <button
+            pButton
+            label="Login"
+            class="w-full bg-jade-600 text-white hover:bg-jade-700 p-2 rounded-lg"
+            type="submit"
+          ></button>
+        </div>
+      </form>
+  
+      <p-toast></p-toast>
+    </div>
+  </div>
+  
