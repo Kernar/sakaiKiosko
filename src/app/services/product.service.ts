@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {  environment } from '../../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '../core/interfaces/product.interface';
+import { Product } from '../interfaces/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class ProductService {
 
   // Actualizar un producto existente
   updateProduct(product: Product): Observable<Product> {
-    return this.http.patch<Product>(`${this.Url}/products`, product);
+    return this.http.patch<Product>(`${this.Url}/products/${product.id}`, product);
   }
 
   // Eliminar un producto
