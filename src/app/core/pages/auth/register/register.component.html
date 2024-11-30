@@ -1,1 +1,85 @@
-<p>register works!</p>
+<div class="min-h-screen flex items-center justify-center bg-jade-50 py-6 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-screen-md w-full space-y-8">
+        <!-- Título y Subtítulo -->
+        <div class="text-center">
+            <h2 class="text-3xl font-extrabold text-jade-700">Regístrate</h2>
+            <p class="mt-2 text-lg text-jade-600">Crea una cuenta para comenzar</p>
+        </div>
+
+        <!-- Formulario de Registro -->
+        <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm" class="space-y-8 divide-y divide-gray-200">
+            <!-- Campos del Formulario en dos columnas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div>
+                        <label for="firstName" class="block text-sm font-medium text-jade-600">Nombre</label>
+                        <input type="text" id="firstName" name="firstName" [(ngModel)]="firstName" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="dob" class="block text-sm font-medium text-jade-600">Fecha de nacimiento</label>
+                        <input type="date" id="dob" name="dob" [(ngModel)]="dob" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-jade-600">Correo electrónico</label>
+                        <input type="email" id="email" name="email" [(ngModel)]="email" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                    </div>
+                </div>
+
+                <!-- Segunda columna de campos -->
+                <div class="space-y-4">
+                    <div>
+                        <label for="lastName" class="block text-sm font-medium text-jade-600">Apellido</label>
+                        <input type="text" id="lastName" name="lastName" [(ngModel)]="lastName" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-jade-600">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" [(ngModel)]="phone" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-jade-600">Nombre de usuario</label>
+                        <input type="text" id="username" name="username" [(ngModel)]="username" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contraseña y Confirmar Contraseña -->
+            <div class="space-y-4 pt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                    <label for="password" class="block text-sm font-medium text-jade-600">Contraseña</label>
+                    <input type="password" id="password" name="password" [(ngModel)]="password" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium text-jade-600">Repetir contraseña</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required
+                        [class.border-red-500]="passwordMismatch"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                    <div *ngIf="passwordMismatch" class="text-sm text-red-500">Las contraseñas no coinciden</div>
+                </div>
+            </div>
+
+            <!-- Aceptar términos y condiciones -->
+            <div class="flex items-center justify-between pt-6">
+                <div class="flex items-center">
+                    <input id="terms" name="terms" type="checkbox" [(ngModel)]="termsAccepted" required
+                        class="h-4 w-4 text-jade-600 focus:ring-jade-500 border-gray-300 rounded">
+                    <label for="terms" class="ml-2 text-sm font-medium text-jade-600">Acepto los términos y condiciones</label>
+                </div>
+            </div>
+
+            <!-- Botón de Registro -->
+            <div class="pt-8 flex justify-center">
+                <button type="submit" 
+                    class="w-full sm:w-1/2 px-6 py-3 bg-jade-600 text-black font-semibold rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 hover:bg-jade-700">
+                    Registrarse
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

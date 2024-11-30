@@ -1,1 +1,45 @@
-<p>revover works!</p>
+<div class="min-h-screen flex items-center justify-center bg-jade-50 py-6 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-screen-md w-full space-y-8">
+        <!-- Título y Subtítulo -->
+        <div class="text-center">
+            <h2 class="text-3xl font-extrabold text-jade-700">Recuperar Contraseña</h2>
+            <p class="mt-2 text-lg text-jade-600">Introduce tu correo electrónico para recuperar tu contraseña.</p>
+        </div>
+
+        <!-- Formulario de Recuperación de Contraseña -->
+        <form (ngSubmit)="onSubmit(recoverForm)" #recoverForm="ngForm" class="space-y-8 divide-y divide-gray-200">
+            <!-- Correo Electrónico -->
+            <div class="space-y-4">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-jade-600">Correo electrónico</label>
+                    <input type="email" id="email" name="email" [(ngModel)]="email" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                </div>
+            </div>
+
+            <!-- Nueva Contraseña -->
+            <div class="space-y-4 pt-8">
+                <div>
+                    <label for="newPassword" class="block text-sm font-medium text-jade-600">Nueva Contraseña</label>
+                    <input type="password" id="newPassword" name="newPassword" [(ngModel)]="newPassword" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium text-jade-600">Confirmar Contraseña</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required
+                        [class.border-red-500]="passwordMismatch"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
+                    <div *ngIf="passwordMismatch" class="text-sm text-red-500">Las contraseñas no coinciden</div>
+                </div>
+            </div>
+
+            <!-- Botón de Recuperación -->
+            <div class="pt-8 flex justify-center">
+                <button type="submit" 
+                    class="w-full sm:w-1/2 px-6 py-3 bg-jade-600 text-black font-semibold rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 hover:bg-jade-700">
+                    Recuperar Contraseña
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
