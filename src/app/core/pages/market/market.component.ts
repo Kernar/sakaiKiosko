@@ -4,10 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
+import { MarketProductsComponent } from './market-products/market-products.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 @Component({
   selector: 'app-market',
   standalone: true,
-  imports: [AppLayoutModule, CommonModule, ButtonModule, MenubarModule],
+  imports: [AppLayoutModule, CommonModule, ButtonModule, MenubarModule, MarketProductsComponent, MenubarModule, BrowserModule],
   templateUrl: './market.component.html',
   styleUrl: './market.component.css'
 })
