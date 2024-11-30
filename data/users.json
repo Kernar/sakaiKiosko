@@ -1,0 +1,106 @@
+{
+    "users": [
+        {
+          "id": 1,
+          "username": "johndoe",
+          "email": "johndoe@example.com",
+          "firstName": "John",
+          "lastName": "Doe",
+          "password": "password123",
+          "role": "admin",
+          "isActive": true
+        },
+        {
+          "id": 2,
+          "username": "janedoe",
+          "email": "janedoe@example.com",
+          "firstName": "Jane",
+          "lastName": "Doe",
+          "password": "password123",
+          "role": "user",
+          "isActive": true
+        },
+        {
+          "id": 3,
+          "username": "mikejones",
+          "email": "mikejones@example.com",
+          "firstName": "Mike",
+          "lastName": "Jones",
+          "password": "password123",
+          "role": "user",
+          "isActive": true
+        },
+        {
+          "id": 4,
+          "username": "emilyroberts",
+          "email": "emilyroberts@example.com",
+          "firstName": "Emily",
+          "lastName": "Roberts",
+          "password": "password123",
+          "role": "user",
+          "isActive": true
+        },
+        {
+          "id": 5,
+          "username": "davidmiller",
+          "email": "davidmiller@example.com",
+          "firstName": "David",
+          "lastName": "Miller",
+          "password": "password123",
+          "role": "admin",
+          "isActive": true
+        },
+        {
+          "id": 6,
+          "username": "laurawilson",
+          "email": "laurawilson@example.com",
+          "firstName": "Laura",
+          "lastName": "Wilson",
+          "password": "password123",
+          "role": "user",
+          "isActive": true
+        },
+        {
+          "id": 7,
+          "username": "kevinbrown",
+          "email": "kevinbrown@example.com",
+          "firstName": "Kevin",
+          "lastName": "Brown",
+          "password": "password123",
+          "role": "user",
+          "isActive": true
+        },
+        {
+          "id": 8,
+          "username": "susanlee",
+          "email": "susanlee@example.com",
+          "firstName": "Susan",
+          "lastName": "Lee",
+          "password": "password123",
+          "role": "admin",
+          "isActive": true
+        },
+        {
+          "id": 9,
+          "username": "brianclark",
+          "email": "brianclark@example.com",
+          "firstName": "Brian",
+          "lastName": "Clark",
+          "password": "password123",
+          "role": "user",
+          "isActive": true
+        },
+        {
+          "id": 10,
+          "username": "melissacarter",
+          "email": "melissacarter@example.com",
+          "firstName": "Melissa",
+          "lastName": "Carter",
+          "password": "password123",
+          "role": "user",
+          "isActive": true
+        }
+      ]
+}
+
+  
