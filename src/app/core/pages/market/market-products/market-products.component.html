@@ -4,7 +4,7 @@
     <div class="card p-4 border-round shadow-sm">
       <!-- Imagen del producto -->
       <div class="relative">
-        <img class="block mx-auto w-full border-round" [src]="product.imagenUrl" [alt]="product.nombre" />
+        <img class="block mx-auto w-full border-round" [src]="product.imagen" [alt]="product.nombre" />
         <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product)" class="absolute" [style.left.px]="4" [style.top.px]="4" />
       </div>
 
