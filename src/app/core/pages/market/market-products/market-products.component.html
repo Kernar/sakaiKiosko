@@ -1,22 +1,29 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    <div *ngFor="let producto of productos" class="max-w-sm rounded overflow-hidden shadow-lg">
-      <img class="w-full" [src]="producto.imagenUrl" [alt]="producto.nombre">
-      <div class="px-6 py-4">
-        <!-- Nombre del producto -->
-        <div class="font-bold text-xl mb-2">{{ producto.nombre }}</div>
-        
-        <!-- Marca del producto -->
-        <div class="text-sm text-gray-500 mb-2">{{ producto.marca }}</div>
-        
-        <!-- Descripción del producto -->
-        <p class="text-gray-700 text-base">
-          {{ producto.descripcion }}
-        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  <!-- Usamos clases de Tailwind para el layout del grid -->
+  <div class="col-span-1" *ngFor="let product of productos">
+    <div class="card p-4 border-round shadow-sm">
+      <!-- Imagen del producto -->
+      <div class="relative">
+        <img class="block mx-auto w-full border-round" [src]="product.imagenUrl" [alt]="product.nombre" />
+        <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product)" class="absolute" [style.left.px]="4" [style.top.px]="4" />
       </div>
-      <div class="px-6 py-4">
-        <!-- Precio del producto -->
-        <span class="text-xl font-semibold text-green-600">${{ producto.precio }}</span>
+
+      <!-- Detalles del producto -->
+      <div class="flex flex-column justify-content-between gap-3 mt-3">
+        <div>
+          <span class="font-medium text-secondary text-sm">{{ product.marca }}</span>
+          <div class="text-lg font-medium text-900 mt-2">{{ product.nombre }}</div>
+        </div>
+
+        <!-- Precio -->
+        <div class="text-xl font-semibold text-900">{{ '$' + product.precio }}</div>
+        
+        <!-- Botones de acción -->
+        <div class="flex flex-row gap-2 mt-3">
+          <p-button icon="pi pi-heart" [outlined]="true" />
+          <p-button icon="pi pi-shopping-cart" label="Buy Now" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'" />
+        </div>
       </div>
     </div>
   </div>
-  
+</div>

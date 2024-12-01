@@ -1,0 +1,41 @@
+.card {
+    background-color: #f9fafb; /* Fondo claro */
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    /* Ajustar el tamaño mínimo y máximo de las tarjetas */
+    min-height: 300px;
+    max-width: 300px;
+  }
+
+  .card img {
+    object-fit: cover;  /* Asegura que la imagen cubra el espacio sin distorsionarse */
+    height: 200px;  /* Ajusta el alto de la imagen */
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      min-width: 100%;  /* Asegura que en pantallas pequeñas las tarjetas ocupen toda la fila */
+    }
+  }
+  
+  .card:hover {
+    transform: translateY(-5px); /* Efecto al pasar el mouse */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .relative {
+    position: relative;
+  }
+  
+  .text-900 {
+    color: #1a202c;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .p-button {
+    border-radius: 25px; /* Bordes redondeados */
+  }
+  
