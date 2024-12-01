@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../../interfaces/product.interface';
-import { ProductService } from '../../../../services/product.service';
+import { ProductService } from '../../../../services/product/product.service';
 import { MessageService, SharedModule } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';

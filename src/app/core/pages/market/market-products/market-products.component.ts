@@ -6,7 +6,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { Product } from '../../../../interfaces/product.interface';
-import { ProductService } from '../../../../services/product.service';
+import { ProductService } from '../../../../services/product/product.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 

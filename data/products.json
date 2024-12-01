@@ -97,6 +97,13 @@
       "marca": "as",
       "descripcion": "as",
       "cantidad": 10
+    },
+    {
+      "id": "6948",
+      "nombre": "Smartphone Galaxy SA2",
+      "marca": "Smartphone Galaxy SA2",
+      "cantidad": 23,
+      "descripcion": "Smartphone Galaxy SA2"
     }
   ]
 }

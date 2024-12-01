@@ -1,9 +1,10 @@
 import { Component, NgModule } from '@angular/core';
 import { SharedModule } from 'primeng/api';
-import { ProductsComponent } from './products/products.component';
+
 import { AppLayoutModule } from '../../../layout/app.layout.module';
 import { LayoutService } from '../../../layout/service/app.layout.service';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { ProductsComponent } from './products/products.component';
 
 @Component({
   selector: 'app-dashboard',
