@@ -7,9 +7,9 @@
     <div class="col-12">
 
         <div class="card px-6 py-6">
-            <h1>
-                tabla producto
-              </h1>
+                    <h1>
+            tabla producto
+          </h1>
             <p-toast></p-toast>
             <p-toolbar styleClass="mb-4">
                 <ng-template pTemplate="left">
@@ -129,7 +129,7 @@
         <p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
             <div class="flex align-items-center justify-content-center">
                 <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-                <span *ngIf="product">Are you sure you want to delete <b>{{product.nombre}}</b>?</span>
+                <span *ngIf="product">seguro de borrarlo? <b>{{product.nombre}}</b>?</span>
             </div>
             <ng-template pTemplate="footer">
                 <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteProductDialog = false"></button>
