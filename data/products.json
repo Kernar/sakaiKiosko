@@ -205,15 +205,6 @@
       "role": "user",
       "birthDate": "1989-06-25",
       "phone": 9012345678
-    },
-    {
-      "id": "7967",
-      "firstName": "sdad",
-      "lastName": "dasd",
-      "email": "root@example.com",
-      "phone": "3434",
-      "roles": "user",
-      "birthDate": "2024-12-03T05:00:00.000Z"
     }
   ]
 }
