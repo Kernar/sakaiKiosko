@@ -1,13 +1,10 @@
 export interface User {
-
     email: string;
     birthDate: Date;
     firstName: string;
     lastName: string;
-    phone: string;
+    phone: number;
     username: string;
     password: string;
-    role: string;
-    isActive: boolean;
-
+    role: 'admin' | 'user';  // Puede ser 'admin' o 'user'
 }
