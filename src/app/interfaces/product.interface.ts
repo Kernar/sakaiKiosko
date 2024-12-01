@@ -1,9 +1,11 @@
-export interface Product {//esto es la interface para usar el json o el API en general
+export interface Product {
     id: string;
     nombre: string;
     imagen: string;
-    precio: string;
+    precio: number;
     marca: string;
     descripcion: string;
-
-}
+    cantidad: number;
+    inventoryStatus?: string;  // Propiedad opcional para el estado del inventario
+  }
+  

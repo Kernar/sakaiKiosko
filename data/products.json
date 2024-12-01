@@ -3,89 +3,100 @@
     {
       "id": "1",
       "nombre": "Smartphone Galaxy SA2",
-      "imagen": "https://example.com/images/galaxy-s23.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 899.99,
       "marca": "Samsung",
-      "descripcion": "Un smartphone de alto rendimiento con cámara de calidad profesional y pantalla AMOLED."
+      "descripcion": "Un smartphone de alto rendimiento con cámara de calidad profesional y pantalla AMOLED.",
+      "cantidad": 10
     },
     {
       "id": "2",
       "nombre": "Auriculares Bluetooth QuietComfort 45",
-      "imagen": "https://example.com/images/quietcomfort-45.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 329.99,
       "marca": "Bose",
-      "descripcion": "Auriculares con cancelación activa de ruido y sonido nítido, ideales para música y llamadas."
+      "descripcion": "Auriculares con cancelación activa de ruido y sonido nítido, ideales para música y llamadas.",
+      "cantidad": 0
     },
     {
       "id": "3",
       "nombre": "Laptop MacBook Air M2",
-      "imagen": "https://example.com/images/macbook-air-m2.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 1199,
       "marca": "Apple",
-      "descripcion": "Laptop ultradelgada con chip M2, rendimiento excepcional y batería de larga duración."
+      "descripcion": "Laptop ultradelgada con chip M2, rendimiento excepcional y batería de larga duración.",
+      "cantidad": 5
     },
     {
       "id": "4",
       "nombre": "Smart TV OLED 55 pulgadas",
-      "imagen": "https://example.com/images/oled-tv-55.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 1399.99,
       "marca": "LG",
-      "descripcion": "Televisor OLED con resolución 4K, colores vibrantes y soporte para Dolby Vision y Atmos."
+      "descripcion": "Televisor OLED con resolución 4K, colores vibrantes y soporte para Dolby Vision y Atmos.",
+      "cantidad": 2
     },
     {
       "id": "5",
       "nombre": "Reloj Inteligente Series 8",
-      "imagen": "https://example.com/images/series-8-watch.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 499.99,
       "marca": "Apple",
-      "descripcion": "Reloj inteligente con seguimiento de salud, GPS y notificaciones al instante."
+      "descripcion": "Reloj inteligente con seguimiento de salud, GPS y notificaciones al instante.",
+      "cantidad": 0
     },
     {
       "id": "6",
       "nombre": "Cámara Digital Alpha 7 IV",
-      "imagen": "https://example.com/images/alpha-7-iv.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 2499,
       "marca": "Sony",
-      "descripcion": "Cámara full-frame con enfoque automático avanzado y grabación de video 4K."
+      "descripcion": "Cámara full-frame con enfoque automático avanzado y grabación de video 4K.",
+      "cantidad": 3
     },
     {
       "id": "7",
       "nombre": "Parrilla Eléctrica BBQ Pro",
-      "imagen": "https://example.com/images/bbq-pro.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 199.99,
       "marca": "Tefal",
-      "descripcion": "Parrilla eléctrica compacta con control de temperatura y fácil limpieza."
+      "descripcion": "Parrilla eléctrica compacta con control de temperatura y fácil limpieza.",
+      "cantidad": 8
     },
     {
       "id": "8",
       "nombre": "Mochila Antirrobo TravelPro",
-      "imagen": "https://example.com/images/travelpro-backpack.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 79.99,
       "marca": "Samsonite",
-      "descripcion": "Mochila espaciosa con diseño antirrobo y múltiples compartimentos."
+      "descripcion": "Mochila espaciosa con diseño antirrobo y múltiples compartimentos.",
+      "cantidad": 0
     },
     {
       "id": "9",
       "nombre": "Tablet Galaxy Tab S8",
-      "imagen": "https://example.com/images/galaxy-tab-s8.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 749.99,
       "marca": "Samsung",
-      "descripcion": "Tablet con pantalla de alta resolución, soporte para S Pen y conectividad 5G."
+      "descripcion": "Tablet con pantalla de alta resolución, soporte para S Pen y conectividad 5G.",
+      "cantidad": 6
     },
     {
       "id": "10",
       "nombre": "Consola PlayStation 5",
-      "imagen": "https://example.com/images/ps5.jpg",
+      "imagen": "assets/img/sus.jpg",
       "precio": 499.99,
       "marca": "Sony",
-      "descripcion": "Consola de última generación con gráficos 4K y una amplia biblioteca de juegos."
+      "descripcion": "Consola de última generación con gráficos 4K y una amplia biblioteca de juegos.",
+      "cantidad": 4
     },
     {
       "id": "2cc0",
       "nombre": "asa",
-      "imagen": "as",
+      "imagen": "assets/img/sus.jpg",
       "marca": "as",
-      "descripcion": "as"
+      "descripcion": "as",
+      "cantidad": 10
     }
   ]
 }
