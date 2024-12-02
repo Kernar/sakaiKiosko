@@ -6,7 +6,6 @@ import { Product } from '../../../../interfaces/product.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
-import { AppLayoutModule } from '../../../../layout/app.layout.module';
 @Component({
   selector: 'app-detail-products',
   standalone: true,

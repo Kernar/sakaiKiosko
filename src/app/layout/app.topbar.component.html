@@ -6,8 +6,6 @@
         <span class="ml-2 text-lg font-bold">KiosKos</span>
     </a>
 
-
-
     <!-- Menú y botones -->
     <div class="flex items-center space-x-4">
         <button #menubutton class="p-link layout-menu-button" (click)="layoutService.onMenuToggle()">
@@ -35,19 +33,52 @@
             </span>
         </div>
 
-    <!-- Menú desplegable de opciones (solo visible cuando el perfil es visible) -->
-    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <button class="p-link layout-topbar-button hover:bg-black-700 p-2 rounded-md">
-            <i class="pi pi-calendar text-black"></i>
-            <span>Calendar</span>
+<!-- Menú desplegable de opciones -->
+<div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+  
+    <!-- Carrito -->
+    <button class="p-link layout-topbar-button" [routerLink]="'/cart'">
+      <i class="pi pi-cart-minus text-black"></i>
+      <span>Carrito</span>
+    </button>
+  
+    <!-- Perfil con submenú -->
+    <div class="relative">
+        <button class="p-link layout-topbar-button" (click)="toggleSubmenu('perfil')">
+        <i class="pi pi-user text-black"></i>
+        <span>Perfil</span>
         </button>
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-user text-black"></i>
-            <span>Perfil</span>
+    
+        <!-- Submenú de perfil (solo con íconos) -->
+        <div *ngIf="isSubmenuOpen['perfil']" class="absolute left-0 mt-2 space-y-2 bg-white text-black shadow-lg rounded-lg w-12 z-50">
+        <button class="p-link layout-topbar-button w-full py-2  flex items-center justify-center">
+            <i class="pi pi-pencil text-xl"></i> <!-- Icono de Editar Perfil -->
         </button>
-        <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
-            <i class="pi pi-cog text-black"></i>
-            <span>Configuración</span>
+        <button class="p-link layout-topbar-button w-full py-2 flex items-center justify-center">
+            <i class="pi pi-sign-out text-xl"></i> <!-- Icono de Cerrar sesión -->
         </button>
+        </div>
     </div>
+  
+  
+    <!-- Configuración con submenú -->
+    <div class="relative">
+        <button class="p-link layout-topbar-button" (click)="toggleSubmenu('config')">
+        <i class="pi pi-cog text-black"></i>
+        <span>Configuración</span>
+        </button>
+    
+        <!-- Submenú de configuración (solo con íconos) -->
+        <div *ngIf="isSubmenuOpen['config']" class="absolute left-0 mt-2 space-y-2 bg-white text-black shadow-lg rounded-lg w-12 z-50">
+        <button class="p-link layout-topbar-button w-full py-2 hover:bg-gray-100 flex items-center justify-center">
+            <i class="pi pi-sun text-xl"></i> <!-- Icono de Tema -->
+        </button>
+        <button class="p-link layout-topbar-button w-full py-2 hover:bg-gray-100 flex items-center justify-center">
+            <i class="pi pi-lock text-xl"></i> <!-- Icono de Seguridad -->
+        </button>
+        </div>
+    </div>
+
+  
+  </div>
 </div>
