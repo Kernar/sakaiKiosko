@@ -17,4 +17,10 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenu') menu!: ElementRef;
 
     constructor(public layoutService: LayoutService) { }
+    
+    searchTerm: string = '';
+    onSearchChange() {
+        console.log('Buscando: ', this.searchTerm);
+        // Lógica de búsqueda aquí, como filtrar items, enviar consulta a la API, etc.
+      }
 }
