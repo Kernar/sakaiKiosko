@@ -6,45 +6,47 @@
         <span class="ml-2 text-lg font-bold">KiosKos</span>
     </a>
 
-    <!-- Input de búsqueda (al lado izquierdo, antes de los botones) -->
-    <div class="flex items-center space-x-2 ml-4">
-        <span class="p-input-icon-left">
-            <input
-                type="text"
-                pInputText
-                placeholder="Search"
-                class="p-inputtext p-component p-element"
-                [(ngModel)]="searchTerm"
-                (input)="onSearchChange()"
-            />
-            <i class="pi pi-search"></i>
-        </span>
-    </div>
+
 
     <!-- Menú y botones -->
     <div class="flex items-center space-x-4">
         <button #menubutton class="p-link layout-menu-button" (click)="layoutService.onMenuToggle()">
-            <i class="pi pi-bars text-white"></i> <!-- Icono de menú -->
+            <i class="pi pi-bars text-black"></i> <!-- Icono de menú -->
         </button>
 
         <!-- Menú desplegable de perfil -->
         <button #topbarmenubutton class="p-link layout-topbar-menu-button" (click)="layoutService.showProfileSidebar()">
-            <i class="pi pi-ellipsis-v text-white"></i> <!-- Icono de perfil -->
+            <i class="pi pi-ellipsis-v text-black"></i> <!-- Icono de perfil -->
         </button>
     </div>
 
+        <!-- Input de búsqueda (al lado izquierdo, antes de los botones) -->
+        <div class="flex items-center space-x-2 ml-4">
+            <span class="p-input-icon-left">
+                <input
+                    type="text"
+                    pInputText
+                    placeholder="Search"
+                    class="p-inputtext p-component p-element"
+                    [(ngModel)]="searchTerm"
+                    (input)="onSearchChange()"
+                />
+                <i class="pi pi-search"></i>
+            </span>
+        </div>
+
     <!-- Menú desplegable de opciones (solo visible cuando el perfil es visible) -->
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-calendar"></i>
+        <button class="p-link layout-topbar-button hover:bg-black-700 p-2 rounded-md">
+            <i class="pi pi-calendar text-black"></i>
             <span>Calendar</span>
         </button>
         <button class="p-link layout-topbar-button">
-            <i class="pi pi-user"></i>
+            <i class="pi pi-user text-black"></i>
             <span>Perfil</span>
         </button>
         <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
-            <i class="pi pi-cog"></i>
+            <i class="pi pi-cog text-black"></i>
             <span>Configuración</span>
         </button>
     </div>
