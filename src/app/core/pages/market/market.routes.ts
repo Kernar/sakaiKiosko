@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 import { MarketComponent } from "./market.component";
 import { DetailProductsComponent } from "./detail-products/detail-products.component";
 import { MarketProductsComponent } from "./market-products/market-products.component";
+import { CartComponent } from "./cart/cart.component";
 
 export const marketRoutes: Routes = [
     {
@@ -20,6 +21,10 @@ export const marketRoutes: Routes = [
             {
                 path: 'detail-product/:id',
                 component: DetailProductsComponent
+            },
+            {
+                path: 'cart',
+                component: CartComponent
             }
         ]
     }

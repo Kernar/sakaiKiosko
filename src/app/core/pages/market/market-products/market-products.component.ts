@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit,  } from '@angular/core';
+import { Component, Input, OnInit,  } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { PaginatorModule } from 'primeng/paginator';
 import { DataViewModule } from 'primeng/dataview';
@@ -10,6 +10,7 @@ import { ProductService } from '../../../../services/product/product.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { Router, RouterLink } from '@angular/router';
+import { CartService } from '../../../../services/cart/cart.service';
 
 
 @Component({
@@ -25,11 +26,13 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class MarketProductsComponent {
 
+  @Input() product!: Product;
   productos: Product[] = [];  // Aquí almacenaremos los productos
 
   constructor(
     private productService: ProductService,
-    private router: Router  // Inyectamos Router para manejar la navegación
+    private router: Router,  // Inyectamos Router para manejar la navegación
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +56,10 @@ export class MarketProductsComponent {
       this.router.navigate([`/detail-product/${id}`]);
     }
 
-
+      // Método para agregar el producto al carrito
+  addToCart(product: Product){
+    console.log("Producto seleccionado:", product);
+    this.cartService.addToCart(product);
+  }
   
 }

@@ -1,20 +1,24 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
   <!-- Usamos clases de Tailwind para el layout del grid -->
   <div class="col-span-1" *ngFor="let product of productos">
-    <a [routerLink]="['/market/detail-product', product.id]">
-      
-    <div class="card p-4 border-round shadow-sm " >
-      <!-- Imagen del producto -->
-      <div class="relative">
-        <img class="block mx-auto w-full border-round" [src]="product.imagen" [alt]="product.nombre" />
-        <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product)" class="absolute" [style.left.px]="4" [style.top.px]="4" />
-      </div>
+    <!-- Enlace solo en imagen y nombre -->
+    <div class="card p-4 border-round shadow-sm">
+      <!-- Imagen del producto con enlace -->
+      <a [routerLink]="['/market/detail-product', product.id]" class="block">
+        <div class="relative">
+          <img class="block mx-auto w-full border-round" [src]="product.imagen" [alt]="product.nombre" />
+          <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product)" class="absolute" [style.left.px]="4" [style.top.px]="4" />
+        </div>
+      </a>
 
       <!-- Detalles del producto -->
       <div class="flex flex-column justify-content-between gap-3 mt-3">
         <div>
-          <span class="font-medium text-secondary text-sm">{{ product.marca }}</span>
-          <div class="text-lg font-medium text-900 mt-2">{{ product.nombre }}</div>
+          <span class="font-medium text-secondary text-sm"></span>
+          <!-- Título con enlace -->
+          <a [routerLink]="['/market/detail-product', product.id]" class="text-lg font-medium text-900 mt-2">
+            {{ product.nombre }}
+          </a>
         </div>
 
         <!-- Precio -->
@@ -23,11 +27,10 @@
         <!-- Botones de acción -->
         <div class="flex flex-row gap-2 mt-3">
           <p-button icon="pi pi-heart" [outlined]="true" />
-          <p-button icon="pi pi-shopping-cart" label="Buy Now" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'" />
+          <p-button icon="pi pi-shopping-cart" label="" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"
+          (click)="addToCart(product)" />
         </div>
       </div>
     </div>
-    </a>
-    
   </div>
 </div>

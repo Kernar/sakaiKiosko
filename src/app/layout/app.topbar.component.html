@@ -37,10 +37,14 @@
 <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
   
     <!-- Carrito -->
-    <button class="p-link layout-topbar-button" [routerLink]="'/cart'">
-      <i class="pi pi-cart-minus text-black"></i>
-      <span>Carrito</span>
+    <button class="p-link layout-topbar-button relative" [routerLink]="'/market/cart'">
+        <i class="pi pi-cart-minus text-black"></i>
+        <span *ngIf="cartItemCount > 0" class="badge bg-red-500 text-white absolute top-0 right-0 rounded-full w-6 h-6 flex items-center justify-center text-xs">
+        {{ cartItemCount }}
+        </span>
     </button>
+  
+  
   
     <!-- Perfil con submenú -->
     <div class="relative">
