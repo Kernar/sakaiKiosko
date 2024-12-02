@@ -34,8 +34,9 @@ export class DetailProductsComponent implements OnInit {
     if (this.productId) {
       // Llamamos al servicio para obtener el producto correspondiente
       this.productService.getProductById(this.productId).subscribe(product => {
-        console.log(product);
+        //console.log(product);
         // Aquí puedes manejar el producto obtenido
+        this.product = product;
       });
     }
   }

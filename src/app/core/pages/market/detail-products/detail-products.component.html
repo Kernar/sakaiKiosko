@@ -1,18 +1,35 @@
-
-<div *ngIf="product; else loading">
-    <div class="product-details">
-      <h2>{{ product.nombre }}</h2>
-      <img [src]="product.imagen" [alt]="product.nombre" class="product-image" />
-      <p><strong>Marca:</strong> {{ product.marca }}</p>
-      <p><strong>Precio:</strong> ${{ product.precio }}</p>
-      <p><strong>Descripción:</strong> {{ product.descripcion }}</p>
-      <p><strong>Inventario:</strong> {{ product.inventoryStatus }}</p>
+<div *ngIf="product; else loading" class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-3xl font-semibold text-gray-800">{{ product.nombre }}</h2>
+      
+      <div class="mt-4 flex flex-col md:flex-row gap-6">
+        <!-- Imagen del producto -->
+        <img [src]="product.imagen" [alt]="product.nombre" class="w-full md:w-1/3 rounded-lg shadow-md object-cover" />
+    
+        <div class="flex-1 mt-4 md:mt-0">
+          <!-- Información del producto -->
+          <p class="text-lg text-gray-600"><strong>Marca:</strong> {{ product.marca }}</p>
+          <p class="text-xl font-bold text-green-600"><strong>Precio:</strong> ${{ product.precio }}</p>
+          <p class="text-gray-600"><strong>Descripción:</strong> {{ product.descripcion }}</p>
+          <p class="text-gray-600"><strong>Inventario:</strong> {{ product.cantidad }}</p>
+  
+          <!-- Botones de acción -->
+          <div class="mt-6 flex gap-4">
+            <button class="px-6 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-400 focus:outline-none">
+              <i class="pi pi-heart"></i> Favoritos
+            </button>
+            <button class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-400 focus:outline-none">
+              <i class="pi pi-cart-minus"></i> Carrito
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   
   <ng-template #loading>
-    <p>Cargando producto...</p>
+    <div class="text-center py-8">
+      <p class="text-xl text-gray-600">Cargando producto...</p>
+    </div>
   </ng-template>
-
-
   
