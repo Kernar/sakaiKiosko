@@ -1,1 +1,18 @@
-<p>detail-products works!</p>
+
+<div *ngIf="product; else loading">
+    <div class="product-details">
+      <h2>{{ product.nombre }}</h2>
+      <img [src]="product.imagen" [alt]="product.nombre" class="product-image" />
+      <p><strong>Marca:</strong> {{ product.marca }}</p>
+      <p><strong>Precio:</strong> ${{ product.precio }}</p>
+      <p><strong>Descripción:</strong> {{ product.descripcion }}</p>
+      <p><strong>Inventario:</strong> {{ product.inventoryStatus }}</p>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <p>Cargando producto...</p>
+  </ng-template>
+
+
+  

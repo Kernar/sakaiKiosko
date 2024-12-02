@@ -12,13 +12,11 @@ import { MessageService } from 'primeng/api';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { HttpClient } from '@angular/common/http';
-import { AppLayoutModule } from '../../../../layout/app.layout.module';
-
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [AppLayoutModule ,CommonModule, FormsModule, ButtonModule, ToastModule, TableModule, ToolbarModule, DialogModule, DropdownModule, CalendarModule],
+  imports: [CommonModule, FormsModule, ButtonModule, ToastModule, TableModule, ToolbarModule, DialogModule, DropdownModule, CalendarModule],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css',
   providers: [

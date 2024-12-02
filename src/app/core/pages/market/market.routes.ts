@@ -1,5 +1,7 @@
 import { Routes } from "@angular/router";
 import { MarketComponent } from "./market.component";
+import { DetailProductsComponent } from "./detail-products/detail-products.component";
+import { MarketProductsComponent } from "./market-products/market-products.component";
 
 export const marketRoutes: Routes = [
     {
@@ -7,15 +9,18 @@ export const marketRoutes: Routes = [
         component: MarketComponent,
         children: [
             {
-				path: '',
-				redirectTo: 'market',
-				pathMatch: 'full',
-			},
-
-			{
-				path: '**',
-				redirectTo: 'market',
-			},
+                path: '',
+                redirectTo: 'product',  // Redirige a productos si no se proporciona ningún path
+                pathMatch: 'full'
+            },
+            {
+                path: 'product',
+                component: MarketProductsComponent
+            },
+            {
+                path: 'detail-product/:id',
+                component: DetailProductsComponent
+            }
         ]
     }
 ]

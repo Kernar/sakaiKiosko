@@ -10,12 +10,12 @@ import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 import { DialogModule } from 'primeng/dialog';
-import { AppLayoutModule } from '../../../../layout/app.layout.module';
+
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ SharedModule, CommonModule, FormsModule, ButtonModule, ToastModule, TableModule, ToolbarModule, DialogModule, AppLayoutModule],
+  imports: [ SharedModule, CommonModule, FormsModule, ButtonModule, ToastModule, TableModule, ToolbarModule, DialogModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
   providers: [

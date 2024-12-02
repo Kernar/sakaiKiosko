@@ -8,11 +8,14 @@ import { marketRoutes } from './core/pages/market/market.routes';
 export const routes: Routes = [
 
   {
-    path: '',
-    redirectTo: 'market',
-    pathMatch: 'full',
+    path: '',  // Ruta raíz
+    component: AppLayoutComponent,  // Componente contenedor
+    children: [
+      { path: '', redirectTo: 'market', pathMatch: 'full' }, // Redirección por defecto
+      ...authRoutes,  // Rutas de autenticación
+      ...dashboardRoutes,  // Rutas del dashboard
+      ...marketRoutes,  // Rutas de mercado
+    ]
   },
-  ...authRoutes,
-  ...dashboardRoutes,
-  ...marketRoutes
+  { path: '**', redirectTo: '' }  // Ruta de error 404 (si no existe ruta definida)
 ];

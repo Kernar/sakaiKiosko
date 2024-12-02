@@ -9,11 +9,13 @@ import { Product } from '../../../../interfaces/product.interface';
 import { ProductService } from '../../../../services/product/product.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+import { Router, RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-market-products',
   standalone: true,
-  imports: [ CommonModule, PaginatorModule, InputTextModule, DataViewModule, ButtonModule, TagModule],
+  imports: [ CommonModule, PaginatorModule, InputTextModule, DataViewModule, ButtonModule, TagModule, RouterLink],
   templateUrl: './market-products.component.html',
   styleUrl: './market-products.component.css',
   providers: [
@@ -25,7 +27,10 @@ export class MarketProductsComponent {
 
   productos: Product[] = [];  // Aquí almacenaremos los productos
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private router: Router  // Inyectamos Router para manejar la navegación
+  ) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
@@ -41,6 +46,13 @@ export class MarketProductsComponent {
     // Mapear 'IN STOCK' a 'success' y 'OUTOFSTOCK' a 'danger'
     return product.inventoryStatus === 'IN STOCK' ? 'success' : 'danger';
   }
-  
+
+    // Método para redirigir a la página de detalles del producto
+    goToProductDetail(id: number): void {
+      // Navegar a la ruta detail-product/:id
+      this.router.navigate([`/detail-product/${id}`]);
+    }
+
+
   
 }

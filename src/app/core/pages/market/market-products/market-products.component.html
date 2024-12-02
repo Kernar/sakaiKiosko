@@ -1,7 +1,9 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
   <!-- Usamos clases de Tailwind para el layout del grid -->
   <div class="col-span-1" *ngFor="let product of productos">
-    <div class="card p-4 border-round shadow-sm">
+    <a [routerLink]="['/market/detail-product', product.id]">
+      
+    <div class="card p-4 border-round shadow-sm " >
       <!-- Imagen del producto -->
       <div class="relative">
         <img class="block mx-auto w-full border-round" [src]="product.imagen" [alt]="product.nombre" />
@@ -25,5 +27,7 @@
         </div>
       </div>
     </div>
+    </a>
+    
   </div>
 </div>

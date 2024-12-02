@@ -1,16 +1,14 @@
 import { Component, NgModule } from '@angular/core';
 import { SharedModule } from 'primeng/api';
-
-import { AppLayoutModule } from '../../../layout/app.layout.module';
-import { LayoutService } from '../../../layout/service/app.layout.service';
-import { FooterComponent } from '../../components/footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { UsersComponent } from './users/users.component';
+import { HttpClientModule } from '@angular/common/http';
+import {  RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [AppLayoutModule, FooterComponent, UsersComponent],
+  imports: [ HttpClientModule, RouterOutlet],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
