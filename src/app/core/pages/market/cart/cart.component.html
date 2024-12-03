@@ -1,1 +1,35 @@
-<p>cart works!</p>
+<div class="cart-container">
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+      <p>Tu carrito está vacío</p>
+    </div>
+  
+    <div *ngFor="let product of cartItems" class="card p-4 mb-4">
+      <div class="flex gap-4">
+        <!-- Imagen del producto -->
+        <img [src]="product.imagen" alt="{{ product.nombre }}" class="w-24 h-24 object-cover">
+        
+        <div class="flex flex-column justify-between">
+          <!-- Nombre y descripción del producto -->
+          <div class="text-lg font-semibold">{{ product.nombre }}</div>
+          <p class="text-sm text-gray-600">{{ product.descripcion }}</p>
+  
+          <!-- Precio y cantidad -->
+          <div class="flex items-center gap-2">
+            <span class="font-medium text-xl text-900">{{ '$' + (product.precio * product.cantidad) }}</span>
+            <span class="text-sm text-gray-500">x {{ product.cantidad }} unidades</span>
+          </div>
+  
+          <!-- Botón para eliminar el producto -->
+          <button (click)="removeFromCart(product)" class="p-button p-button-danger mt-3">
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Mostrar total del carrito -->
+    <div *ngIf="cartItems.length > 0" class="cart-total">
+      <div class="text-lg font-bold">Total: {{ '$' + getTotal() }}</div>
+    </div>
+  </div>
+  

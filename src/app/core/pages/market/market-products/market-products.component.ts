@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../../../services/cart/cart.service';
-
+import { CartItem } from '../../../../interfaces/cartItem.interface'
 
 @Component({
   selector: 'app-market-products',
@@ -26,7 +26,7 @@ import { CartService } from '../../../../services/cart/cart.service';
 })
 export class MarketProductsComponent {
 
-  @Input() product!: Product;
+  quantity: number = 1;
   productos: Product[] = [];  // Aquí almacenaremos los productos
 
   constructor(
@@ -56,10 +56,13 @@ export class MarketProductsComponent {
       this.router.navigate([`/detail-product/${id}`]);
     }
 
-      // Método para agregar el producto al carrito
-  addToCart(product: Product){
-    console.log("Producto seleccionado:", product);
-    this.cartService.addToCart(product);
+  // Método para agregar el producto al carrito con la cantidad seleccionada
+  addToCart(product: Product, quantity: number) {
+    if (quantity > 0 && quantity <= product.cantidad) {  // Verificar que la cantidad es válida
+      this.cartService.addToCart(product, quantity);
+    } else {
+      alert('Cantidad inválida');
+    }
   }
   
 }
