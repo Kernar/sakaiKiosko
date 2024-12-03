@@ -61,4 +61,20 @@ export class CartService {
     this.cart = [];
     this.cartItemCountSubject.next(0); // Actualiza el contador a 0
   }
+
+  updateQuantity(productId: number, quantity: number) {
+    const itemIndex = this.cart.findIndex(item => item.id === productId);
+    if (itemIndex > -1) {
+      this.cart[itemIndex].quantity = quantity;
+      this.cartItemCountSubject.next(this.cart.reduce((acc, item) => acc + item.quantity, 0)); // Actualiza el contador
+    }
+  }
+
+  updateCartItem(updatedItem: CartItem) {
+    const itemIndex = this.cart.findIndex(item => item.id === updatedItem.id);
+    if (itemIndex > -1) {
+      this.cart[itemIndex] = updatedItem; // Reemplaza el ítem con los nuevos valores
+      this.cartItemCountSubject.next(this.cart.reduce((acc, item) => acc + item.quantity, 0)); // Actualiza el contador
+    }
+  }
 }

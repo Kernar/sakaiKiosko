@@ -27,10 +27,8 @@
         <!-- Botones de acción -->
         <div class="flex flex-row gap-2 mt-3">
           <p-button icon="pi pi-heart" [outlined]="true" />
-          <div class="flex flex-row gap-2 mt-3">
-            <input type="number" [(ngModel)]="quantity" min="1" [max]="product.cantidad" class="w-16 p-inputtext" />
-            <p-button icon="pi pi-shopping-cart" label="" (click)="addToCart(product, quantity)" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'" />
-          </div>
+          <p-button icon="pi pi-shopping-cart" label="" (click)="addToCart(product, quantity)" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'" />
+
         </div>
       </div>
     </div>

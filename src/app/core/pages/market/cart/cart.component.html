@@ -1,35 +1,72 @@
-<div class="cart-container">
-    <div *ngIf="cartItems.length === 0" class="empty-cart">
-      <p>Tu carrito está vacío</p>
-    </div>
+<div class="cart-container grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Columna 1: Detalles básicos de cada producto -->
+    <div>
+      <div *ngIf="cartItems.length === 0" class="empty-cart">
+        <p class="text-center text-lg font-semibold text-gray-500">Tu carrito está vacío</p>
+      </div>
   
-    <div *ngFor="let product of cartItems" class="card p-4 mb-4">
-      <div class="flex gap-4">
-        <!-- Imagen del producto -->
-        <img [src]="product.imagen" alt="{{ product.nombre }}" class="w-24 h-24 object-cover">
-        
-        <div class="flex flex-column justify-between">
-          <!-- Nombre y descripción del producto -->
-          <div class="text-lg font-semibold">{{ product.nombre }}</div>
-          <p class="text-sm text-gray-600">{{ product.descripcion }}</p>
-  
-          <!-- Precio y cantidad -->
-          <div class="flex items-center gap-2">
-            <span class="font-medium text-xl text-900">{{ '$' + (product.precio * product.cantidad) }}</span>
-            <span class="text-sm text-gray-500">x {{ product.cantidad }} unidades</span>
+      <div *ngFor="let item of cartItems" class="card p-4 mb-4 border border-gray-300 rounded-lg shadow-md">
+        <div class="flex gap-4">
+          <!-- Imagen del producto -->
+          <img [src]="item.imagen" alt="{{ item.nombre }}" class="w-24 h-24 object-cover rounded-md shadow-sm">
+    
+          <div class="flex flex-col justify-between w-full">
+            <!-- Nombre del producto -->
+            <div class="text-lg font-semibold text-gray-800">{{ item.nombre }}</div>
+            
+            <!-- Cantidad y botón para eliminar -->
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+              <span>Cantidad: </span>
+              <input type="number" [(ngModel)]="item.quantity" min="1" [max]="item.cantidad" class="w-16 p-inputtext border rounded-md text-center" />
+              <button (click)="removeFromCart(item)" class="p-button p-button-danger mt-2 text-sm">
+                Eliminar
+              </button>
+            </div>
           </div>
-  
-          <!-- Botón para eliminar el producto -->
-          <button (click)="removeFromCart(product)" class="p-button p-button-danger mt-3">
-            Eliminar
-          </button>
         </div>
       </div>
     </div>
   
-    <!-- Mostrar total del carrito -->
-    <div *ngIf="cartItems.length > 0" class="cart-total">
-      <div class="text-lg font-bold">Total: {{ '$' + getTotal() }}</div>
+    <!-- Columna 2: Resumen del carrito y detalles de los productos -->
+    <div class="bg-white p-6 border border-gray-300 rounded-lg shadow-md">
+      <h2 class="text-lg font-semibold mb-4 text-center text-gray-800">Resumen de la Compra</h2>
+    
+      <div *ngFor="let item of cartItems" class="mb-4">
+        <!-- Nombre del producto y precio por unidad -->
+        <div class="flex justify-between text-sm mb-2 text-gray-700">
+          <span>{{ item.nombre }}</span>
+          <span>{{ '$' + item.precio.toFixed(2) }}</span>
+        </div>
+    
+        <!-- Cantidad y total del producto -->
+        <div class="flex justify-between text-sm mb-2 text-gray-600">
+          <span>Cantidad: {{ item.quantity }}</span>
+          <span>{{ '$' + (item.precio * item.quantity).toFixed(2) }}</span>
+        </div>
+      </div>
+
+        <!-- Impuestos y descuentos -->
+    <div class="flex justify-between text-sm text-gray-600 mb-2">
+        <span>Impuesto (5%):</span>
+        <span>{{ '$' + (getTotal() * 0.05).toFixed(2) }}</span>
+    </div>
+    
+    <div class="flex justify-between text-sm text-gray-600 mb-4">
+        <span>Descuento:</span>
+        <span>{{ '$' + (getTotal() * 0.10).toFixed(2) }}</span>  <!-- Ejemplo de descuento del 10% -->
+    </div>
+    
+      <!-- Total general del carrito -->
+      <div class="flex justify-between text-lg font-semibold text-gray-800 mb-6">
+        <span>Total:</span>
+        <span>{{ '$' + getTotal().toFixed(2) }}</span>
+      </div>
+    
+      <!-- Botón para proceder al pago -->
+      <button class="w-full p-button p-button-primary rounded-md shadow-md">
+        Proceder al Pago
+      </button>
     </div>
   </div>
+  
   
