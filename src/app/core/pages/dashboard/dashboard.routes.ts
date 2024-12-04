@@ -6,7 +6,7 @@ import { UsersComponent } from "./users/users.component";
 
 export const dashboardRoutes: Routes = [
     {
-        path: 'dashboard',  // Ruta principal del dashboard
+        path: 'administracion',  // Ruta principal del dashboard
         component: DashboardComponent,  // Carga el DashboardComponent dentro de AppLayoutComponent
         children: [  // Rutas hijas que cargan dentro de DashboardComponent
           {
