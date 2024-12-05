@@ -34,4 +34,21 @@ export class UserService {
   deleteUser(id: number): Observable<User> {
     return this.http.delete<User>(`${this.Url}/users/${id}`);
   }
+
+    // Métodos adicionales para login, registro y recuperación de contraseña
+
+  // Login de usuario
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.Url}http://localhost:3000/users`, { username, password });
+  }
+
+  // Registro de usuario
+  register(user: User): Observable<User> {
+    return this.http.post<User>(`${this.Url}/register`, user);
+  }
+
+  // Recuperación de contraseña
+  recoverPassword(email: string): Observable<any> {
+    return this.http.post<any>(`${this.Url}/recover-password`, { email });
+  }
 }

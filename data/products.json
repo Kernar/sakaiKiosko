@@ -104,6 +104,21 @@
       "marca": "Smartphone Galaxy SA2",
       "cantidad": 23,
       "descripcion": "Smartphone Galaxy SA2"
+    },
+    {
+      "id": "c6e3",
+      "username": "sys",
+      "password": "sys"
+    },
+    {
+      "id": "dcd7",
+      "username": "sys",
+      "password": "sys"
+    },
+    {
+      "id": "c2e8",
+      "username": "sys",
+      "password": "sys"
     }
   ],
   "users": [
@@ -120,11 +135,11 @@
     },
     {
       "id": "2",
-      "username": "janedoe",
+      "username": "sys",
       "email": "janedoe@example.com",
       "firstName": "Jane",
       "lastName": "Doe",
-      "password": "password123",
+      "password": "sys",
       "role": "user",
       "birthDate": "1992-05-15",
       "phone": 2345678901
@@ -205,6 +220,31 @@
       "role": "user",
       "birthDate": "1989-06-25",
       "phone": 9012345678
+    },
+    {
+      "id": "62c7",
+      "username": "sys",
+      "password": "sys"
+    },
+    {
+      "id": "a608",
+      "username": "sys",
+      "password": "sys"
+    },
+    {
+      "id": "5ebf",
+      "username": "sys",
+      "password": "sys"
+    },
+    {
+      "id": "e282",
+      "username": "sys",
+      "password": "sys"
+    },
+    {
+      "id": "a5aa",
+      "username": "sys",
+      "password": "sys"
     }
   ]
 }
