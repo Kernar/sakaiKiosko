@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { BehaviorSubject } from 'rxjs';
 import { CartItem } from '../../interfaces/cartItem.interface'
+import { Cart } from '../../interfaces/cart.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,15 @@ export class CartService {
       this.cart[existingItemIndex].quantity += quantity;
     } else {
       // Si no existe, agrega el producto al carrito con la cantidad seleccionada
-      const cartItem: CartItem = { ...product, quantity };  // Combina las propiedades de 'product' con 'quantity'
+      const cartItem: CartItem = { 
+        id: product.id,              // ID del producto
+        cartId: 'someCartId',         // Necesitas definir un cartId válido
+        productId: product.id,       // ID del producto
+        quantity: quantity,          // Cantidad del producto
+        currentPrice: product.price, // El precio actual del producto
+        cart: {} as Cart,            // Relación con el carrito, necesitarás crear o definir un carrito
+        product: product, 
+       };  // Combina las propiedades de 'product' con 'quantity'
       this.cart.push(cartItem);
     }
   

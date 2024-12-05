@@ -6,8 +6,6 @@ export interface Order {
     userId: string;       // ID del usuario
     total: number;        // Total de la orden
     status: string;       // Estado de la orden (ej. "pendiente", "completado", "cancelado")
-    createdAt: string;
-    updatedAt: string;
     user: User;           // Relación con el usuario
     items: OrderItem[];   // Relación con los items de la orden
   }

@@ -12,8 +12,6 @@ export interface User {
     phone: string;     // Se almacena como string, no como número
     birthDate: string; // Debería ser Date en Prisma, pero se pasa como string
     role: string;
-    createdAt: string;
-    updatedAt: string;
     carts: Cart[];      // Relación con el carrito
     orders: Order[];    // Relación con los pedidos
     passwordResets: PasswordReset[];  // Relación con los restablecimientos de contraseña

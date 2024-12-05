@@ -22,9 +22,9 @@ export class CartComponent implements OnInit{
     this.cartItems = this.cartService.getCartItems(); // Obtener los productos del carrito desde el servicio
   }
 
-  // Método para calcular el total del carrito
+  //Método para calcular el total del carrito
   getTotal(): number {
-    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);  // Cambiar item.precio a item.product.precio
+    return this.cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);  // Cambiar item.precio a item.product.precio
   }
 
   // Método para eliminar un producto del carrito
@@ -37,16 +37,17 @@ export class CartComponent implements OnInit{
     if (item.quantity < 1) {
       item.quantity = 1; // No permitir cantidad menor a 1
     }
-    
-    // Asegúrate de convertir 'item.inventoryStatus' a número
-    const maxQuantity = Number(item.inventoryStatus); // o puedes usar: const maxQuantity = +item.inventoryStatus;
-    
+  
+    // Verifica si el producto tiene 'inventoryStatus' y convierte a número
+    const maxQuantity = Number(item.product.inventoryStatus); // Asegúrate de que 'product' esté presente
+  
     if (item.quantity > maxQuantity) {
       item.quantity = maxQuantity; // No permitir cantidad mayor al stock disponible
     }
   
     this.cartService.updateCartItem(item); // Llama al servicio para actualizar el carrito
   }
+  
 
   
 }
