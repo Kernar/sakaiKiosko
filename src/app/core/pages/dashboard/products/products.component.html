@@ -37,28 +37,28 @@
                 <ng-template pTemplate="body" let-product>
                     <tr>
                         <td style="width:14%; min-width:10rem;"><span class="p-column-title">Nombre</span>
-                            {{product.nombre }}
+                            {{product.name }}
                         </td>
   
                         <td style="width:14%; min-width:10rem;"><span class="p-column-title">Image</span>
-                            <img src={{product.imagen}} [alt]="product.nombre" width="50" class="shadow-4" />
+                            <img src={{product.imageUrl}} [alt]="product.name" width="50" class="shadow-4" />
                         </td>
                         <td style="width:14%; min-width:8rem;">
                             <span class="p-column-title">Price</span>
-                            {{product.precio | currency:'USD'}}
+                            {{product.price | currency:'USD'}}
                         </td>
                         <td style="width:14%; min-width:10rem;">
                             <span class="p-column-title">Category</span>
-                            {{product.marca}}
+                            {{product.brand}}
                         </td>
                         <td style="width:14%; min-width:8rem;">
                             <span class="p-column-title">Cantidad</span>
-                            {{product.cantidad}}
+                            {{product.availableStock}}
                         </td>
                         
                         <td style="width:14%; min-width:10rem;">
                           <span class="p-column-title">Description</span>
-                          {{product.descripcion}}
+                          {{product.description}}
                         </td>
                         <td>
                             <div class="flex">
@@ -76,40 +76,40 @@
   
                 <div class="field">
                     <label for="name">Nombre</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="product.nombre" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.nombre}"/>
-                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.nombre">Name is required.</small>
+                    <input type="text" pInputText id="name" [(ngModel)]="product.name" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.name}"/>
+                    <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.name">Name is required.</small>
                 </div>
   
                 <div class="field">
                   <label for="name">Imagen</label>
-                  <input type="text" pInputText id="name" [(ngModel)]="product.imagen" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.nombre}"/>
-                  <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.imagen">Name is required.</small>
+                  <input type="text" pInputText id="name" [(ngModel)]="product.imageUrl" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.name}"/>
+                  <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.imageUrl">Name is required.</small>
               </div>
   
   
                 <div class="formgrid grid">
                     <div class="field col">
                         <label for="price">Precio</label>
-                        <p-inputNumber id="price" [(ngModel)]="product.precio" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
+                        <p-inputNumber id="price" [(ngModel)]="product.price" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
                     </div>
                 </div>
   
                 <div class="field">
                   <label for="name">Marca</label>
-                  <input type="text" pInputText id="name" [(ngModel)]="product.marca" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.nombre}"/>
-                  <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.marca">Name is required.</small>
+                  <input type="text" pInputText id="name" [(ngModel)]="product.brand" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.name}"/>
+                  <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.brand">Name is required.</small>
               </div>
 
               <div class="field">
                 <label for="cantidad">Cantidad</label>
-                <input type="number" pInputText id="cantidad" [(ngModel)]="product.cantidad" required [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.cantidad}"/>
-                <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.cantidad">Cantidad is required.</small>
+                <input type="number" pInputText id="cantidad" [(ngModel)]="product.availableStock" required [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.availableStock}"/>
+                <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.availableStock">Cantidad is required.</small>
               </div>              
 
               <div class="field">
                 <label for="name">Descripcion</label>
-                <input type="text" pInputText id="name" [(ngModel)]="product.descripcion" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.descripcion}"/>
-                <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.descripcion">Name is required.</small>
+                <input type="text" pInputText id="name" [(ngModel)]="product.description" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !product.description}"/>
+                <small class="ng-dirty ng-invalid" *ngIf="submitted && !product.description">Name is required.</small>
               </div>
 
             </ng-template>
@@ -125,7 +125,7 @@
         <p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
             <div class="flex align-items-center justify-content-center">
                 <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-                <span *ngIf="product">seguro de borrarlo? <b>{{product.nombre}}</b>?</span>
+                <span *ngIf="product">seguro de borrarlo? <b>{{product.name}}</b>?</span>
             </div>
             <ng-template pTemplate="footer">
                 <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteProductDialog = false"></button>

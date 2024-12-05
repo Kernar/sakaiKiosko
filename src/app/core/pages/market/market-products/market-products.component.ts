@@ -39,7 +39,7 @@ export class MarketProductsComponent {
     this.productService.getProducts().subscribe(data => {
       this.productos = data.map(product => {
         // Agregar dinámicamente inventoryStatus
-        product['inventoryStatus'] = product.cantidad > 0 ? 'IN STOCK' : 'OUTOFSTOCK';
+        product['inventoryStatus'] = product.availableStock > 0 ? 'IN STOCK' : 'OUTOFSTOCK';
         return product;
       });
     });
@@ -50,19 +50,16 @@ export class MarketProductsComponent {
     return product.inventoryStatus === 'IN STOCK' ? 'success' : 'danger';
   }
 
-    // Método para redirigir a la página de detalles del producto
-    goToProductDetail(id: number): void {
-      // Navegar a la ruta detail-product/:id
-      this.router.navigate([`/detail-product/${id}`]);
-    }
+  // Método para redirigir a la página de detalles del producto
+  goToProductDetail(id: string): void {
+    // Navegar a la ruta detail-product/:id
+    this.router.navigate([`market/detail-product/${id}`]);
+  }
 
   // Método para agregar el producto al carrito con la cantidad seleccionada
   addToCart(product: Product, quantity: number) {
-    if (quantity > 0 && quantity <= product.cantidad) {  // Verificar que la cantidad es válida
-      this.cartService.addToCart(product, quantity);
-    } else {
-      alert('Cantidad inválida');
-    }
+    // Llamar al servicio de carrito para agregar el producto
+    this.cartService.addProductToCart(product, quantity)
   }
   
 }

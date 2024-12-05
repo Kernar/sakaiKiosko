@@ -14,7 +14,7 @@ export class CartService {
 
   constructor() {}
 
-  addToCart(product: Product, quantity: number) {
+  addProductToCart(product: Product, quantity: number) {
     // Verifica si el producto ya está en el carrito
     const existingItemIndex = this.cart.findIndex(item => item.id === product.id);
   
@@ -23,7 +23,7 @@ export class CartService {
       this.cart[existingItemIndex].quantity += quantity;
     } else {
       // Si no existe, agrega el producto al carrito con la cantidad seleccionada
-      const cartItem: CartItem = { ...product, quantity };  // Aquí combinamos las propiedades de 'product' con 'quantity'
+      const cartItem: CartItem = { ...product, quantity };  // Combina las propiedades de 'product' con 'quantity'
       this.cart.push(cartItem);
     }
   
@@ -32,6 +32,7 @@ export class CartService {
   
     console.log(this.cart);  // Verifica en consola el estado del carrito
   }
+  
 
   // Método para obtener los productos del carrito
   getCartItems(): CartItem[] {
@@ -39,7 +40,7 @@ export class CartService {
   }
 
   // Método para eliminar un producto del carrito
-  removeFromCart(productId: number) {
+  removeFromCart(productId: string) {
     const itemIndex = this.cart.findIndex(item => item.id === productId);
     if (itemIndex > -1) {
       this.cart.splice(itemIndex, 1);
@@ -48,7 +49,7 @@ export class CartService {
   }
 
   // Método para disminuir la cantidad de un producto
-  decreaseQuantity(productId: number) {
+  decreaseQuantity(productId: string) {
     const itemIndex = this.cart.findIndex(item => item.id === productId);
     if (itemIndex > -1 && this.cart[itemIndex].quantity > 1) {
       this.cart[itemIndex].quantity -= 1;
@@ -62,7 +63,7 @@ export class CartService {
     this.cartItemCountSubject.next(0); // Actualiza el contador a 0
   }
 
-  updateQuantity(productId: number, quantity: number) {
+  updateQuantity(productId: string, quantity: number) {
     const itemIndex = this.cart.findIndex(item => item.id === productId);
     if (itemIndex > -1) {
       this.cart[itemIndex].quantity = quantity;

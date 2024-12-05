@@ -24,7 +24,7 @@ export class CartComponent implements OnInit{
 
   // Método para calcular el total del carrito
   getTotal(): number {
-    return this.cartItems.reduce((total, item) => total + (item.precio * item.quantity), 0);  // Cambiar item.precio a item.product.precio
+    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);  // Cambiar item.precio a item.product.precio
   }
 
   // Método para eliminar un producto del carrito

@@ -63,7 +63,7 @@ export class ProductsComponent implements OnInit {
     this.deleteProductDialog = false;
     this.productService.deleteProduct(this.product.id).subscribe((data)=> {
       this.messageService.add({severity:'success | confirmado', summary:'Producto borrado', 
-        detail: 'Producto '+this.product.nombre+' borrado satisfactoriamente'})
+        detail: 'Producto '+this.product.name+' borrado satisfactoriamente'})
     });
     this.getProducts();
   }
@@ -81,14 +81,14 @@ export class ProductsComponent implements OnInit {
         this.product = data;
         this.getProducts();
         this.messageService.add({severity:'success | confirmado', summary:'Producto actualizado', 
-          detail: 'Producto '+this.product.nombre+' actualizado satisfactoriamente'})
+          detail: 'Producto '+this.product.name+' actualizado satisfactoriamente'})
       })
     } else {
       this.productService.addProduct(this.product).subscribe((data)=>{
         this.product = data;
         this.getProducts();
         this.messageService.add({severity:'success | confirmado', summary:'Producto creado', 
-          detail: 'Producto '+this.product.nombre+' creado satisfactoriamente'})
+          detail: 'Producto '+this.product.name+' creado satisfactoriamente'})
       })
     }
     

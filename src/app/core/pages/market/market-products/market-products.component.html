@@ -6,7 +6,7 @@
       <!-- Imagen del producto con enlace -->
       <a [routerLink]="['/market/detail-product', product.id]" class="block">
         <div class="relative">
-          <img class="block mx-auto w-full border-round" [src]="product.imagen" [alt]="product.nombre" />
+          <img class="block mx-auto w-full border-round" [src]="product.imageUrl" [alt]="product.name" />
           <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product)" class="absolute" [style.left.px]="4" [style.top.px]="4" />
         </div>
       </a>
@@ -17,12 +17,13 @@
           <span class="font-medium text-secondary text-sm"></span>
           <!-- Título con enlace -->
           <a [routerLink]="['/market/detail-product', product.id]" class="text-lg font-medium text-900 mt-2">
-            {{ product.nombre }}
+            {{ product.name }}
           </a>
+          
         </div>
 
         <!-- Precio -->
-        <div class="text-xl font-semibold text-900">{{ '$' + product.precio }}</div>
+        <div class="text-xl font-semibold text-900">{{ '$' + product.price }}</div>
         
         <!-- Botones de acción -->
         <div class="flex flex-row gap-2 mt-3">

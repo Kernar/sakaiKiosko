@@ -8,16 +8,16 @@
       <div *ngFor="let item of cartItems" class="card p-4 mb-4 border border-gray-300 rounded-lg shadow-md">
         <div class="flex gap-4">
           <!-- Imagen del producto -->
-          <img [src]="item.imagen" alt="{{ item.nombre }}" class="w-24 h-24 object-cover rounded-md shadow-sm">
+          <img [src]="item.imageUrl" alt="{{ item.name }}" class="w-24 h-24 object-cover rounded-md shadow-sm">
     
           <div class="flex flex-col justify-between w-full">
             <!-- Nombre del producto -->
-            <div class="text-lg font-semibold text-gray-800">{{ item.nombre }}</div>
+            <div class="text-lg font-semibold text-gray-800">{{ item.name }}</div>
             
             <!-- Cantidad y botón para eliminar -->
             <div class="flex items-center gap-2 text-sm text-gray-600">
               <span>Cantidad: </span>
-              <input type="number" [(ngModel)]="item.quantity" min="1" [max]="item.cantidad" class="w-16 p-inputtext border rounded-md text-center" />
+              <input type="number" [(ngModel)]="item.quantity" min="1" [max]="item.availableStock" class="w-16 p-inputtext border rounded-md text-center" />
               <button (click)="removeFromCart(item)" class="p-button p-button-danger mt-2 text-sm">
                 Eliminar
               </button>
@@ -34,14 +34,14 @@
       <div *ngFor="let item of cartItems" class="mb-4">
         <!-- Nombre del producto y precio por unidad -->
         <div class="flex justify-between text-sm mb-2 text-gray-700">
-          <span>{{ item.nombre }}</span>
-          <span>{{ '$' + item.precio.toFixed(2) }}</span>
+          <span>{{ item.name }}</span>
+          <span>{{ '$' + item.price.toFixed(2) }}</span>
         </div>
     
         <!-- Cantidad y total del producto -->
         <div class="flex justify-between text-sm mb-2 text-gray-600">
           <span>Cantidad: {{ item.quantity }}</span>
-          <span>{{ '$' + (item.precio * item.quantity).toFixed(2) }}</span>
+          <span>{{ '$' + (item.price * item.quantity).toFixed(2) }}</span>
         </div>
       </div>
 

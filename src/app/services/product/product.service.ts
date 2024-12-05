@@ -17,13 +17,13 @@ export class ProductService {
 
   //metodos CRUD para products
 
-  //obtener todos los productos
-  getProducts(): Observable<Product[]>{
+  // Obtener todos los productos
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.Url}/products`);
   }
 
-  //obtener un prodcuto por ID
-  getProductById(id: number): Observable<Product> {
+  // Obtener un producto por ID
+  getProductById(id: string): Observable<Product> {
     return this.http.get<Product>(`${this.Url}/products/${id}`);
   }
 
@@ -34,11 +34,11 @@ export class ProductService {
 
   // Actualizar un producto existente
   updateProduct(product: Product): Observable<Product> {
-    return this.http.patch<Product>(`${this.Url}/products/${product.id}`, product);
+    return this.http.put<Product>(`${this.Url}/products/${product.id}`, product);
   }
 
   // Eliminar un producto
-  deleteProduct(id: number): Observable<Product> {
+  deleteProduct(id: string): Observable<Product> {
     return this.http.delete<Product>(`${this.Url}/products/${id}`);
   }
   

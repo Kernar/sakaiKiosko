@@ -16,7 +16,7 @@ import { MessageService } from 'primeng/api';
 
 })
 export class DetailProductsComponent implements OnInit {
-  productId!: number; 
+  productId!: string; 
   product: Product | null = null; // Esto almacenará los detalles del producto
 
   constructor(
@@ -27,7 +27,7 @@ export class DetailProductsComponent implements OnInit {
 
   ngOnInit(): void {
     // Capturamos el parámetro 'id' de la URL
-    this.productId = Number(this.route.snapshot.paramMap.get('id'));
+    this.productId = String(this.route.snapshot.paramMap.get('id'));
 
     // Verificamos que tenemos un id válido
     if (this.productId) {
