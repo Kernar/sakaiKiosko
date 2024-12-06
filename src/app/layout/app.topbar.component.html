@@ -8,15 +8,17 @@
 
     <!-- Menú y botones -->
     <div class="flex items-center space-x-4">
-        <button #menubutton class="p-link layout-menu-button" (click)="layoutService.onMenuToggle()">
+        <!-- Este botón solo se muestra cuando la ruta es '/administracion' o sus subrutas -->
+        <button #menubutton *ngIf="showMenuIcons" class="p-link layout-menu-button" (click)="layoutService.onMenuToggle()">
             <i class="pi pi-bars text-black"></i> <!-- Icono de menú -->
         </button>
-
+    
         <!-- Menú desplegable de perfil -->
-        <button #topbarmenubutton class="p-link layout-topbar-menu-button" (click)="layoutService.showProfileSidebar()">
+        <button #topbarmenubutton *ngIf="showMenuIcons" class="p-link layout-topbar-menu-button" (click)="layoutService.showProfileSidebar()">
             <i class="pi pi-ellipsis-v text-black"></i> <!-- Icono de perfil -->
         </button>
     </div>
+      
 
         <!-- Input de búsqueda (al lado izquierdo, antes de los botones) -->
         <div class="flex items-center space-x-2 ml-4">

@@ -34,53 +34,55 @@ export class LoginComponent {
     private messageService: MessageService  // Inyectamos el servicio de mensajes
   ) {}
 
+  // Método para alternar la visibilidad de la contraseña
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
   // Función que se llama cuando el formulario se envía
-  onSubmit() {
-    this.submitted = true;
-  
+  onSubmit(): void {
+    this.submitted = true; // Marca el formulario como enviado
+
+    // Si el formulario es válido
     if (this.username && this.password) {
       // Llamamos al servicio de login
-      this.userService.login(this.username, this.password).subscribe({
-        next: (response) => {
-          // Suponiendo que el backend retorna un objeto con un token
-          if (response?.token) {
-            // Almacenar el token en localStorage o sessionStorage según el caso
-            localStorage.setItem('auth_token', response.token);
-  
-            // Mostrar mensaje de éxito
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Login Successful',
-              detail: `Welcome, ${this.username}!`,
-            });
-  
-            // Redirigir al dashboard o página principal
-            this.router.navigate(['/dashboard']);
-          } else {
-            // Mostrar mensaje de error si no hay token
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Login Failed',
-              detail: 'Invalid username or password.',
-            });
-          }
+      this.userService.login(this.username, this.password).subscribe(
+        (response) => {
+          // Aquí recibimos la respuesta de login exitoso
+          console.log('Login exitoso:', response);
+
+          // Muestra un mensaje de éxito usando el MessageService
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Login Exitoso',
+            detail: 'Bienvenido, ' + this.username + '!'
+          });
+
+          // Redirigimos al usuario a la página por defecto (por ejemplo, 'dashboard')
+          this.router.navigate(['/market']); // Asegúrate de tener la ruta '/dashboard' definida
         },
-        error: (err) => {
-          // Manejo de errores en caso de fallos en la conexión o el backend
+        (error) => {
+          // Manejo de errores, si el login falla
+          console.error('Error en el login:', error);
+
+          // Muestra un mensaje de error
           this.messageService.add({
             severity: 'error',
-            summary: 'Login Failed',
-            detail: 'An error occurred during login. Please try again later.',
+            summary: 'Error en el Login',
+            detail: 'Usuario o contraseña incorrectos.'
           });
-          console.error('Error during login:', err);
         }
+      );
+    } else {
+      // Si los campos no están completos, mostrar un mensaje de advertencia
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Campos incompletos',
+        detail: 'Por favor, ingrese su usuario y contraseña.'
       });
     }
   }
   
 
-  // Método para alternar la visibilidad de la contraseña
-  togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
-  }
+
 }
