@@ -8,13 +8,13 @@
 
     <!-- Menú y botones -->
     <div class="flex items-center space-x-4">
-        <!-- Este botón solo se muestra cuando la ruta es '/administracion' o sus subrutas -->
-        <button #menubutton  class="p-link layout-menu-button" (click)="layoutService.onMenuToggle()">//*ngIf="showMenuIcons"
+        <!-- //*ngIf="showMenuIcons" Este botón solo se muestra cuando la ruta es '/administracion' o sus subrutas -->
+        <button #menubutton  class="p-link layout-menu-button" (click)="layoutService.onMenuToggle()">
             <i class="pi pi-bars text-black"></i> <!-- Icono de menú -->
         </button>
     
-        <!-- Menú desplegable de perfil -->
-        <button #topbarmenubutton *ngIf="showMenuIcons" class="p-link layout-topbar-menu-button" (click)="layoutService.showProfileSidebar()">
+        <!-- Menú desplegable de perfil *ngIf="showMenuIcons"-->
+        <button #topbarmenubutton  class="p-link layout-topbar-menu-button" (click)="layoutService.showProfileSidebar()">
             <i class="pi pi-ellipsis-v text-black"></i> <!-- Icono de perfil -->
         </button>
     </div>

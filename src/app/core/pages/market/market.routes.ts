@@ -3,10 +3,12 @@ import { MarketComponent } from "./market.component";
 import { DetailProductsComponent } from "./detail-products/detail-products.component";
 import { MarketProductsComponent } from "./market-products/market-products.component";
 import { CartComponent } from "./cart/cart.component";
+import { publicGuard } from "../../../shared/guards/auth.guard";
 
 export const marketRoutes: Routes = [
     {
         path: 'market',
+        //canActivate:[publicGuard()],
         component: MarketComponent,
         children: [
             {

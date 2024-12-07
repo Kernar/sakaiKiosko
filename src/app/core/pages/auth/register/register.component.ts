@@ -4,8 +4,9 @@ import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators 
 import { ToastModule } from 'primeng/toast';
 import { UserService } from '../../../../services/auth/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
-interface LoginForm {
+interface RegisterForm {
   email:FormControl<string>,
   password: FormControl<string>,
   username:FormControl<string>,
@@ -29,7 +30,9 @@ export class RegisterComponent {
 
   private _formBuilder =  inject(FormBuilder);
 
-  form = this._formBuilder.group<LoginForm>({
+  private _router = inject(Router);
+
+  form = this._formBuilder.group<RegisterForm>({
     email: this._formBuilder.nonNullable.control('', [Validators.required, Validators.email]),
     password: this._formBuilder.nonNullable.control('', Validators.required),
     username: this._formBuilder.nonNullable.control('', Validators.required),
@@ -50,7 +53,9 @@ export class RegisterComponent {
     const formattedBirthdate = birthdate ? new Date(birthdate): null;
     
     this._authService.register(email,password,username, firstName, lastName, phone, formattedBirthdate).subscribe({
-      next: (response) => console.log(response),
+      next: (response) => {
+        this._router.navigateByUrl('market');
+      },
       error:(error) => console.log(error),
     });
   }

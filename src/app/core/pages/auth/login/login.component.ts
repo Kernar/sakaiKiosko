@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -11,10 +11,15 @@ import { UserService } from '../../../../services/auth/user.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProductService } from '../../../../services/product/product.service';
 
+interface LoginForm {
+  email:FormControl<string>,
+  password: FormControl<string>,
+}
+
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonModule, InputTextModule, ToastModule, DialogModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, ButtonModule, InputTextModule, ToastModule, DialogModule, HttpClientModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   providers: [
@@ -22,6 +27,38 @@ import { ProductService } from '../../../../services/product/product.service';
   ]
 })
 export class LoginComponent {
+
+  passwordVisible: boolean = false;
+
+  private _formBuiler = inject(FormBuilder);
+  private _authService = inject(UserService);
+  private _router = inject(Router);
+
+  form = this._formBuiler.group<LoginForm>({
+    email: this._formBuiler.nonNullable.control('',[
+      Validators.required,
+      Validators.email
+    ]),
+    password: this._formBuiler.nonNullable.control('',Validators.required),
+  })
+
+  // Método para alternar la visibilidad de la contraseña
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+  submit(){
+    if (this.form.invalid) return ;
+    const {email, password} = this.form.getRawValue();
+    this._authService.login(email, password). subscribe({
+      next: (response) => {
+        this._router.navigateByUrl('/market');
+      },
+      error: (error) => console.log(error)
+    })
+
+  }
+
+/*
   username: string = '';
   password: string = '';
   passwordVisible: boolean = false;  // Para alternar la visibilidad de la contraseña
@@ -34,13 +71,10 @@ export class LoginComponent {
     private messageService: MessageService  // Inyectamos el servicio de mensajes
   ) {}
 
-  // Método para alternar la visibilidad de la contraseña
-  togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
-  }
+
 
   // Función que se llama cuando el formulario se envía
-  onSubmit(): void {
+   onSubmit(): void {
     this.submitted = true; // Marca el formulario como enviado
 
     // Si el formulario es válido
@@ -81,7 +115,7 @@ export class LoginComponent {
         detail: 'Por favor, ingrese su usuario y contraseña.'
       });
     }
-  }
+  } */
   
 
 

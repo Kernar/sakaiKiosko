@@ -3,12 +3,13 @@ import { AuthComponent } from "./auth.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { RevoverComponent } from "./recover/revover.component";
+import { publicGuard } from "../../../shared/guards/auth.guard";
 
 
 
 export const authRoutes: Routes = [
     {
-        path: 'auth',
+        path: 'auth',	
         component: AuthComponent,
         children: [
             {
@@ -22,6 +23,7 @@ export const authRoutes: Routes = [
 			},
 			{
 				path: 'register',
+				
 				component: RegisterComponent
 			},
 			{
