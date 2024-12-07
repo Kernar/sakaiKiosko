@@ -7,7 +7,7 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 import { User } from '../../../../interfaces/user.inteface';
-import { UserService } from '../../../../services/user/user.service';
+import { UserService } from '../../../../services/auth/user.service';
 import { MessageService } from 'primeng/api';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';

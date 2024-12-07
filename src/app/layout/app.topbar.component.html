@@ -9,7 +9,7 @@
     <!-- Menú y botones -->
     <div class="flex items-center space-x-4">
         <!-- Este botón solo se muestra cuando la ruta es '/administracion' o sus subrutas -->
-        <button #menubutton *ngIf="showMenuIcons" class="p-link layout-menu-button" (click)="layoutService.onMenuToggle()">
+        <button #menubutton  class="p-link layout-menu-button" (click)="layoutService.onMenuToggle()">//*ngIf="showMenuIcons"
             <i class="pi pi-bars text-black"></i> <!-- Icono de menú -->
         </button>
     

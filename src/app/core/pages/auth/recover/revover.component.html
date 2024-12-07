@@ -21,12 +21,12 @@
             <div class="space-y-4 pt-8">
                 <div>
                     <label for="newPassword" class="block text-sm font-medium text-jade-600">Nueva Contraseña</label>
-                    <input type="password" id="newPassword" name="newPassword" [(ngModel)]="newPassword" required
+                    <input type="password" id="newPassword" autocomplete="current-password" name="newPassword" [(ngModel)]="newPassword" required
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                 </div>
                 <div>
                     <label for="confirmPassword" class="block text-sm font-medium text-jade-600">Confirmar Contraseña</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required
+                    <input type="password" id="confirmPassword" autocomplete="current-password" name="confirmPassword" [(ngModel)]="confirmPassword" required
                         [class.border-red-500]="passwordMismatch"
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                     <div *ngIf="passwordMismatch" class="text-sm text-red-500">Las contraseñas no coinciden</div>

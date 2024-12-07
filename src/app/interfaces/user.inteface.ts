@@ -1,6 +1,6 @@
 import { Cart } from "./cart.interface";
 import { Order } from "./order.interface";
-import { PasswordReset } from "./PasswordReset.interface";
+
 
 export interface User {
     id: string;        // Es un UUID
@@ -14,6 +14,6 @@ export interface User {
     role: string;
     carts: Cart[];      // Relación con el carrito
     orders: Order[];    // Relación con los pedidos
-    passwordResets: PasswordReset[];  // Relación con los restablecimientos de contraseña
+    
   }
   

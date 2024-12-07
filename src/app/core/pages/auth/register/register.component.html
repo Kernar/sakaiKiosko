@@ -7,23 +7,25 @@
         </div>
 
         <!-- Formulario de Registro -->
-        <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm" class="space-y-8 divide-y divide-gray-200">
+        <form [formGroup]="form" (ngSubmit)="submit()" 
+        class="space-y-8 divide-y divide-gray-200">
             <!-- Campos del Formulario en dos columnas -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="space-y-4">
                     <div>
                         <label for="firstName" class="block text-sm font-medium text-jade-600">Nombre</label>
-                        <input type="text" id="firstName" name="firstName" [(ngModel)]="firstName" required
+                        <input type="text" id="firstName" name="firstName" formControlName="firstName"
+                        required placeholder="name@company.com" 
                             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                     </div>
                     <div>
                         <label for="dob" class="block text-sm font-medium text-jade-600">Fecha de nacimiento</label>
-                        <input type="date" id="dob" name="dob" [(ngModel)]="dob" required
+                        <input type="date" id="dob" name="dob" formControlName="birthdate" required
                             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                     </div>
                     <div>
                         <label for="email" class="block text-sm font-medium text-jade-600">Correo electrónico</label>
-                        <input type="email" id="email" name="email" [(ngModel)]="email" required
+                        <input type="email" id="email" name="email" formControlName="email"  required
                             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                     </div>
                 </div>
@@ -32,17 +34,17 @@
                 <div class="space-y-4">
                     <div>
                         <label for="lastName" class="block text-sm font-medium text-jade-600">Apellido</label>
-                        <input type="text" id="lastName" name="lastName" [(ngModel)]="lastName" required
+                        <input type="text" id="lastName" name="lastName" formControlName="lastName" required
                             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                     </div>
                     <div>
                         <label for="phone" class="block text-sm font-medium text-jade-600">Teléfono</label>
-                        <input type="tel" id="phone" name="phone" [(ngModel)]="phone" required
+                        <input type="tel" id="phone" name="phone" formControlName="phone" required
                             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                     </div>
                     <div>
                         <label for="username" class="block text-sm font-medium text-jade-600">Nombre de usuario</label>
-                        <input type="text" id="username" name="username" [(ngModel)]="username" required
+                        <input type="text" id="username" name="username" formControlName="username" autocomplete="username" required
                             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                     </div>
                 </div>
@@ -52,31 +54,25 @@
             <div class="space-y-4 pt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                     <label for="password" class="block text-sm font-medium text-jade-600">Contraseña</label>
-                    <input type="password" id="password" name="password" [(ngModel)]="password" required
+                    <input type="password" id="password" name="password" formControlName="password"  autocomplete="current-password" required
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                 </div>
+                <!---
                 <div>
                     <label for="confirmPassword" class="block text-sm font-medium text-jade-600">Repetir contraseña</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required
+                    <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" required
                         [class.border-red-500]="passwordMismatch"
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 focus:border-transparent">
                     <div *ngIf="passwordMismatch" class="text-sm text-red-500">Las contraseñas no coinciden</div>
                 </div>
-            </div>
-
-            <!-- Aceptar términos y condiciones -->
-            <div class="flex items-center justify-between pt-6">
-                <div class="flex items-center">
-                    <input id="terms" name="terms" type="checkbox" [(ngModel)]="termsAccepted" required
-                        class="h-4 w-4 text-jade-600 focus:ring-jade-500 border-gray-300 rounded">
-                    <label for="terms" class="ml-2 text-sm font-medium text-jade-600">Acepto los términos y condiciones</label>
-                </div>
+                -->
             </div>
 
             <!-- Botón de Registro -->
             <div class="pt-8 flex justify-center">
                 <button type="submit" 
-                    class="w-full sm:w-1/2 px-6 py-3 bg-jade-600 text-black font-semibold rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 hover:bg-jade-700">
+                    class="w-full sm:w-1/2 px-6 py-3 bg-green-600 text-black font-semibold rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500 hover:bg-green-700"
+                    [disabled]="form.invalid" >
                     Registrarse
                 </button>
             </div>

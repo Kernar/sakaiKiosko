@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { MenubarModule } from 'primeng/menubar';
+import { RegisterComponent } from './core/pages/auth/register/register.component';
 
 @Component({
   selector: 'app-root',

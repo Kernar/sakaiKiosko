@@ -13,6 +13,17 @@ export class UserService {
 
   private Url: string = environment.baseUrl;
 
+  register(email: string, password: string, username: string, 
+    firstName: string, lastName: string, phone: string, birthdate: Date|null ):Observable<any>{
+    return this.http.post(`${this.Url}/auth/register`, {
+      email, password, username, firstName, lastName, phone, birthdate 
+    })
+  }
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.Url}/users`, { username, password });
+  }
+
   // Métodos CRUD para usuarios
 
   // Obtener todos los usuarios
@@ -38,14 +49,14 @@ export class UserService {
     // Métodos adicionales para login, registro y recuperación de contraseña
 
   // Login de usuario
-  login(username: string, password: string): Observable<any> {
+/*   login(username: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.Url}/users`, { username, password });
   }
 
   // Registro de usuario
   register(user: User): Observable<User> {
     return this.http.post<User>(`${this.Url}/register`, user);
-  }
+  } */
 
   // Recuperación de contraseña
   recoverPassword(email: string): Observable<any> {

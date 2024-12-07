@@ -7,7 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
-import { UserService } from '../../../../services/user/user.service';
+import { UserService } from '../../../../services/auth/user.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProductService } from '../../../../services/product/product.service';
 
