@@ -10,19 +10,19 @@
     <!-- Formulario de Login //(ngSubmit)="onSubmit()"-->
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="field mb-4">
-        <label for="username" class="block text-sm font-medium text-gray-700">Email</label>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
         <input
-          id="username"
+          id="email"
           type="text"
           pInputText
           formControlName="email"
-          autocomplete="username"
-          name="username"  
+          autocomplete="email"
+          name="email"  
           placeholder="Ingrese su email"
           class="w-full mt-1 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500"
-          required
-        /><!--*ngIf="submitted && !username"-->
-        <small class="p-error" >Usuario es requerido.</small>
+          pInputText
+        /><!---->
+        <small class="p-error" *ngIf="form.controls.email.invalid && form.controls.email.touched">email es requerido.</small>
       </div>
 
       <div class="field mb-4 relative">
@@ -36,14 +36,14 @@
           name="password" 
           placeholder="Ingrese su contraseña"
           class="w-full mt-1 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-jade-500"
-          required
+          pInputText
         />
         <!-- Icono para mostrar/ocultar contraseña -->
         <i
-          class="pi pi-eye absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+          class="pi pi-eye absolute right-4  bottom-2 transform -translate-y-1/2 cursor-pointer"
           (click)="togglePasswordVisibility()"
         ></i>
-        <small class="p-error" >Contraseña es requerida.</small><!--*ngIf="submitted && !password"-->
+        <small class="p-error" *ngIf="form.controls.password.invalid && form.controls.password.touched">Contraseña es requerida.</small><!---->
       </div>
 
       <!-- Recuerdame y Olvidaste tu contraseña -->
@@ -66,7 +66,7 @@
         <button
           pButton
           label="Login"
-          class="w-full bg-jade-600 text-white hover:bg-jade-700 p-2 rounded-lg"
+          class="w-full bg-green-600 text-white hover:bg-green-700 p-2 rounded-lg"
           type="submit"
         ></button>
       </div>
