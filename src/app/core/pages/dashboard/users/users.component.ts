@@ -6,7 +6,7 @@ import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
-import { User } from '../../../../interfaces/user.inteface';
+//import { User } from '../../../../interfaces/user.inteface';
 import { UserService } from '../../../../services/auth/user.service';
 import { MessageService } from 'primeng/api';
 import { DropdownModule } from 'primeng/dropdown';
@@ -27,8 +27,8 @@ export class UsersComponent {
 
   userDialog: boolean = false;
   deleteUserDialog: boolean = false;
-  user!: User;
-  users: User[] = [];
+  user: any = {};
+  users: any[] = [];
   submitted: boolean = false;
   rowsPerPageOptions: number[] = [5, 10, 20]; // Paginación
 
@@ -43,17 +43,17 @@ export class UsersComponent {
   }
 
   openNew() {
-    this.user = {} as User;
+    this.user = {} ;
     this.submitted = false;
     this.userDialog = true; // Abrir el modal de usuario
   }
 
-  editUser(user: User) {
+  editUser(user: any) {
     this.user = { ...user };
     this.userDialog = true;
   }
 
-  deleteUser(user: User) {
+  deleteUser(user: any) {
     this.deleteUserDialog = true;
     this.user = { ...user };
   }

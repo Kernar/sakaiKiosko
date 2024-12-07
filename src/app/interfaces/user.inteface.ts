@@ -2,7 +2,7 @@ import { Cart } from "./cart.interface";
 import { Order } from "./order.interface";
 
 
-export interface User {
+/* export interface User {
     id: string;        // Es un UUID
     username: string;
     password: string;
@@ -15,5 +15,5 @@ export interface User {
     carts: Cart[];      // Relación con el carrito
     orders: Order[];    // Relación con los pedidos
     
-  }
+  } */
   
