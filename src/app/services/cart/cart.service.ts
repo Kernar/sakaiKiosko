@@ -22,7 +22,7 @@ export class CartService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
   // Obtener o crear un carrito para el usuario actual (guestUser o realUser)
-loadOrCreateCart(): Observable<Cart> {
+  loadOrCreateCart(): Observable<Cart> {
   const userId = this.userService.getOrCreateGuestUserId(); // Obtiene el ID de usuario actual (invitado o real)
   return this.getCartByUserId(userId).pipe(
     catchError((err) => {

@@ -81,7 +81,7 @@ export class MarketProductsComponent {
     this.cartService.loadOrCreateCart().subscribe({
       next: (cart) => {
         this.cartId = cart.id; // Almacenar el ID del carrito actual
-        console.log('Carrito cargado o creado:', cart);
+        //console.log('Carrito cargado o creado:', cart);
       },
       error: (err) => console.error('Error al cargar o crear el carrito:', err),
     });

@@ -45,7 +45,7 @@ export class AppTopBarComponent {
       // Suscríbete al contador de productos en el carrito
       this.cartService.cartItemCount$.subscribe((count) => {
         this.cartItemCount = count;
-        console.log("Contador del carrito actualizado:", this.cartItemCount);
+        //console.log("Contador del carrito actualizado:", this.cartItemCount);
       });
     }
   
