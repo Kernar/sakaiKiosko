@@ -59,8 +59,7 @@ loadOrCreateCart(): Observable<Cart> {
     return this.http.get<CartItem[]>(`${this.baseUrlCartItems}/${cartId}`).pipe(
       tap((items) => {
         this.cart = items; // Sincroniza con el almacenamiento en memoria
-        const totalCount = items.reduce((acc, item) => acc + item.quantity, 0);
-        this.cartItemCountSubject.next(totalCount); // Actualiza el contador
+        this.updateCartItemCount();//actualiza el contador
       })
     );
   }
@@ -109,6 +108,18 @@ loadOrCreateCart(): Observable<Cart> {
     );
   }
 
+  // Actualizar el contador de productos en el carrito
+  private updateCartItemCount(): void {
+    const totalCount = this.cart.reduce((acc, item) => acc + item.quantity, 0);
+    this.cartItemCountSubject.next(totalCount);
+  }
+
+  // Vaciar el carrito
+  clearCart(): void {
+    this.cart = [];
+    this.cartItemCountSubject.next(0); // Actualiza el contador
+  }
+
   getOrCreateCart(): void {
     const userId = this.userService.getOrCreateGuestUserId(); // Obtén el userId falso
     this.getCartByUserId(userId).subscribe({
@@ -125,11 +136,7 @@ loadOrCreateCart(): Observable<Cart> {
     });
   }
 
-  // Vaciar el carrito
-  clearCart(): void {
-    this.cart = [];
-    this.cartItemCountSubject.next(0); // Actualiza el contador
-  }
+
 
 
   migrateCartToRealUser(realUserId: string): void {
@@ -143,14 +150,6 @@ loadOrCreateCart(): Observable<Cart> {
     });
   }
   
-
-  // Actualizar el contador de productos en el carrito
-  private updateCartItemCount(): void {
-    const totalCount = this.cart.reduce((acc, item) => acc + item.quantity, 0);
-    this.cartItemCountSubject.next(totalCount);
-  }
-
-
   //esto de abajo es codigo antiguo pero esta implementado en otras partes del codigo
 
   // Método para disminuir la cantidad de un producto

@@ -78,26 +78,12 @@ export class MarketProductsComponent {
   }
 
   private loadOrCreateCart(): void {
-    const userId = 'guestUser'; // Usuario ficticio o temporal
-
-    this.cartService.getCartByUserId(userId).subscribe({
+    this.cartService.loadOrCreateCart().subscribe({
       next: (cart) => {
-        this.cartId = cart.id; // Almacena el ID del carrito si ya existe
+        this.cartId = cart.id; // Almacenar el ID del carrito actual
+        console.log('Carrito cargado o creado:', cart);
       },
-      error: (err) => {
-        if (err.status === 404) {
-          // Si no existe, crear un nuevo carrito
-          this.cartService.createCart(userId).subscribe({
-            next: (newCart) => {
-              this.cartId = newCart.id;
-              console.log('Carrito creado con ID:', this.cartId);
-            },
-            error: (createErr) => console.error('Error al crear el carrito:', createErr),
-          });
-        } else {
-          console.error('Error al obtener el carrito:', err);
-        }
-      },
+      error: (err) => console.error('Error al cargar o crear el carrito:', err),
     });
   }
   
