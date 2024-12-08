@@ -26,7 +26,7 @@ export const marketRoutes: Routes = [
             },
             {
                 path: 'cart',
-                canActivate:[publicGuard()],
+                //canActivate:[publicGuard()],
                 component: CartComponent
             }
         ]

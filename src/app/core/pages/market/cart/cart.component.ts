@@ -4,6 +4,7 @@ import { Product } from '../../../../interfaces/product.interface'; // Modelo pa
 import { CommonModule } from '@angular/common';
 import { CartItem } from '../../../../interfaces/cartItem.interface'
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../../../../services/auth/user.service';
 CartService
 
 @Component({
@@ -14,12 +15,38 @@ CartService
   styleUrl: './cart.component.css'
 })
 export class CartComponent implements OnInit{
-  cartItems: CartItem[] = []; // Cambiar Product[] a CartItem[]
 
-  constructor(private cartService: CartService) {}
+  cartItems: CartItem[] = []; // Cambiar Product[] a CartItem[]
+  userId!: string; // El ID del usuario actual (falso o real)
+  cartId!: string; // El ID del carrito asociado
+  constructor(private cartService: CartService, private userService:UserService) {}
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCartItems(); // Obtener los productos del carrito desde el servicio
+    // Obtener el userId (falso o real) del UserService
+    this.userId = this.userService.getOrCreateGuestUserId();
+    // Obtener o crear el carrito asociado
+    this.cartService.getCartByUserId(this.userId).subscribe({
+
+      next: (cart) => {
+        this.cartId = cart.id; // Asigna el ID del carrito
+        this.loadCartItems(); // Carga los ítems del carrito
+      },
+      error: (err) => {
+        console.error('Error al cargar el carrito:', err);
+      },
+    });
+  }
+
+  // Método para cargar los ítems del carrito
+  private loadCartItems(): void {
+    this.cartService.getCartItems(this.cartId).subscribe({
+      next: (items) => {
+        this.cartItems = items; // Asigna los ítems del carrito
+      },
+      error: (err) => {
+        console.error('Error al cargar los ítems del carrito:', err);
+      },
+    });
   }
 
   //Método para calcular el total del carrito
@@ -29,25 +56,41 @@ export class CartComponent implements OnInit{
 
   // Método para eliminar un producto del carrito
   removeFromCart(product: CartItem): void {
-    this.cartService.removeFromCart(product.id); // Eliminar producto pasando el id
-    this.cartItems = this.cartService.getCartItems(); // Actualizar la lista de productos
+    
+    this.cartService.removeFromCart(this.cartId, product.productId).subscribe({
+      next: () => {
+        console.log('Producto eliminado');
+        // Actualizar la lista después de eliminar
+        this.loadCartItems(); // Recargar la lista de productos
+      },
+      error: (err) => {
+        console.error('Error al eliminar el producto:', err);
+      },
+    });
   }
 
   updateQuantity(item: CartItem): void {
     if (item.quantity < 1) {
       item.quantity = 1; // No permitir cantidad menor a 1
     }
-  
-    // Verifica si el producto tiene 'inventoryStatus' y convierte a número
-    const maxQuantity = Number(item.product.inventoryStatus); // Asegúrate de que 'product' esté presente
-  
+
+    const maxQuantity = Number(item.product.inventoryStatus);
     if (item.quantity > maxQuantity) {
       item.quantity = maxQuantity; // No permitir cantidad mayor al stock disponible
     }
-  
-    this.cartService.updateCartItem(item); // Llama al servicio para actualizar el carrito
+
+    
+    this.cartService.updateCartItem(this.cartId, item.productId, item.quantity).subscribe({
+      next: () => {
+        console.log('Cantidad actualizada');
+      },
+      error: (err) => {
+        console.error('Error al actualizar la cantidad:', err);
+      },
+    });
   }
+}
   
 
   
-}
+

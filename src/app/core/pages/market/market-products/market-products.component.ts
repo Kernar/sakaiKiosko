@@ -28,6 +28,7 @@ export class MarketProductsComponent {
 
   quantity: number = 1;
   productos: Product[] = [];  // Aquí almacenaremos los productos
+  cartId: string | null = null; // Almacena el ID del carrito actual
 
   constructor(
     private productService: ProductService,
@@ -43,6 +44,8 @@ export class MarketProductsComponent {
         return product;
       });
     });
+      // Obtener o crear el carrito
+      this.loadOrCreateCart();
   }
 
   getSeverity(product: Product): "success" | "danger" {
@@ -58,8 +61,44 @@ export class MarketProductsComponent {
 
   // Método para agregar el producto al carrito con la cantidad seleccionada
   addToCart(product: Product, quantity: number) {
-    // Llamar al servicio de carrito para agregar el producto
-    this.cartService.addProductToCart(product, quantity)
+    if (product.availableStock < 1) {
+      console.error('Producto no disponible.');
+      return;
+    }
+
+    if (!this.cartId) {
+      console.error('No se pudo encontrar o crear un carrito.');
+      return;
+    }
+
+    this.cartService.addProductToCart(this.cartId, product, quantity).subscribe({
+      next: () => console.log(`Producto ${product.name} agregado al carrito.`),
+      error: (err) => console.error('Error al agregar el producto al carrito:', err),
+    });
+  }
+
+  private loadOrCreateCart(): void {
+    const userId = 'guestUser'; // Usuario ficticio o temporal
+
+    this.cartService.getCartByUserId(userId).subscribe({
+      next: (cart) => {
+        this.cartId = cart.id; // Almacena el ID del carrito si ya existe
+      },
+      error: (err) => {
+        if (err.status === 404) {
+          // Si no existe, crear un nuevo carrito
+          this.cartService.createCart(userId).subscribe({
+            next: (newCart) => {
+              this.cartId = newCart.id;
+              console.log('Carrito creado con ID:', this.cartId);
+            },
+            error: (createErr) => console.error('Error al crear el carrito:', createErr),
+          });
+        } else {
+          console.error('Error al obtener el carrito:', err);
+        }
+      },
+    });
   }
   
 }

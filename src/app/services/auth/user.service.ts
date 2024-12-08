@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../enviroments/enviroment';
 import { tap } from 'rxjs/operators';
 import { StorageService } from '../../shared/data-access/storage.service';
+import { v4 as uuidv4 } from 'uuid'; // Instala 'uuid'
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { StorageService } from '../../shared/data-access/storage.service';
 export class UserService {
 
   private _http = inject(HttpClient)
-
+  private userIdKey = 'guestUser';
   private Url: string = environment.baseUrl;
   private _storage = inject(StorageService);
 
@@ -41,22 +42,38 @@ export class UserService {
 
   // Obtener todos los usuarios
   getUsers(): Observable<any> {
-    return this._http.get(`${this.Url}/users`);
+    return this._http.get(`${this.Url}/auth/users`);
   }
 
   // Agregar un nuevo usuario
   addUser(email: any): Observable<any> {
-    return this._http.post(`${this.Url}/users`, email);
+    return this._http.post(`${this.Url}/auth/users`, email);
   }
 
   // Actualizar un usuario existente
   updateUser(email: any): Observable<any> {
-    return this._http.patch(`${this.Url}/users/${email.id}`, email);
+    return this._http.patch(`${this.Url}/auth/users/${email.id}`, email);
   }
 
   // Eliminar un usuario
   deleteUser(id: any): Observable<any> {
-    return this._http.delete(`${this.Url}/users/${id}`);
+    return this._http.delete(`${this.Url}/auth/users/${id}`);
+  }
+  
+
+  //usuario falso si no estas logeado
+  getOrCreateGuestUserId(): string {
+    let userId = localStorage.getItem(this.userIdKey);
+    if (!userId) {
+      userId = uuidv4(); // Genera un identificador único
+      localStorage.setItem(this.userIdKey, userId);
+    }
+    return userId;
+  }
+
+    // Actualizar el userId al real después de iniciar sesión
+  updateToRealUser(realUserId: string): void {
+    localStorage.setItem(this.userIdKey, realUserId); // Reemplaza el guestUserId con el realUserId
   }
 
 
