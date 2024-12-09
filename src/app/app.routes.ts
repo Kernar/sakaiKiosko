@@ -3,8 +3,6 @@ import { AppLayoutComponent } from './layout/app.layout.component';
 import { dashboardRoutes } from './core/pages/dashboard/dashboard.routes';
 import { authRoutes } from './core/pages/auth/auth.routes';
 import { marketRoutes } from './core/pages/market/market.routes';
-import { publicGuard } from './shared/guards/auth.guard';
-
 
 export const routes: Routes = [
 
@@ -13,11 +11,11 @@ export const routes: Routes = [
     
     component: AppLayoutComponent,  // Componente contenedor
     children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirección por defecto
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       ...authRoutes,  // Rutas de autenticación
-      ...dashboardRoutes,  // Rutas del dashboard
+      ...dashboardRoutes,  // Rutas del administracion
       ...marketRoutes,  // Rutas de mercado
     ]
   },
-  { path: '**', redirectTo: '' }  // Ruta de error 404 (si no existe ruta definida)
+  { path: '**', redirectTo: '' } 
 ];

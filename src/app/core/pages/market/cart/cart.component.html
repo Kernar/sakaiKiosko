@@ -63,8 +63,9 @@
       </div>
     
       <!-- Botón para proceder al pago -->
-      <button class="w-full p-button p-button-primary rounded-md shadow-md">
-        Proceder al Pago
+      <button  (click)="downloadInvoice(orderId)" 
+      class="w-full p-3 text-center p-button p-button-primary rounded-md shadow-md flex items-center justify-center">
+        Proceder al Pago y boleta
       </button>
     </div>
   </div>

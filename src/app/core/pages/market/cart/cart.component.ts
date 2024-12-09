@@ -5,7 +5,8 @@ import { CommonModule } from '@angular/common';
 import { CartItem } from '../../../../interfaces/cartItem.interface'
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../../services/auth/user.service';
-CartService
+import { OrderService } from '../../../../services/order/order.service';
+
 
 @Component({
   selector: 'app-cart',
@@ -19,7 +20,18 @@ export class CartComponent implements OnInit{
   cartItems: CartItem[] = []; // Cambiar Product[] a CartItem[]
   userId!: string; // El ID del usuario actual (falso o real)
   cartId!: string; // El ID del carrito asociado
-  constructor(private cartService: CartService, private userService:UserService) {}
+  orderId!: string
+  constructor(
+    private cartService: CartService, 
+    private userService:UserService,
+    private orderService:OrderService
+  ) {}
+
+  downloadInvoice(orderId: string): void {
+    this.orderService.downloadInvoice(orderId);
+  }
+
+  
 
   ngOnInit(): void {
     console.log('User ID:', this.userId);

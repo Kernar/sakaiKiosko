@@ -1,9 +1,9 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./dashboard.component";
 import { ProductsComponent } from "./products/products.component";
-import { AppLayoutComponent } from "../../../layout/app.layout.component";
 import { UsersComponent } from "./users/users.component";
 import { publicGuard } from "../../../shared/guards/auth.guard";
+import { GraficsComponent } from "./grafics/grafics.component";
 
 export const dashboardRoutes: Routes = [
     {
@@ -18,6 +18,10 @@ export const dashboardRoutes: Routes = [
           {
             path: 'users',
             component: UsersComponent
+          },
+          {
+            path:'grafics',
+            component: GraficsComponent
           }
         ]
       }
