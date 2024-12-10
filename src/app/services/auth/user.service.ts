@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../enviroments/enviroment';
 import { tap } from 'rxjs/operators';
 import { StorageService } from '../../shared/data-access/storage.service';
-import { v4 as uuidv4 } from 'uuid'; // Instala 'uuid'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid'; // Instala 'uuid'
 export class UserService {
 
   private _http = inject(HttpClient)
-  private userIdKey = 'guestUser';
+  private userIdKey = '3e7570d8-e320-4430-9d02-a53c091f7bbf';
   private Url: string = environment.baseUrl;
   private _storage = inject(StorageService);
 
@@ -33,7 +32,7 @@ export class UserService {
       email, password 
     })
     .pipe(tap((response) => {
-        this._storage.set('session', JSON.stringify(Response))
+        this._storage.set('session', JSON.stringify(response))
       })
     )
   }
@@ -65,7 +64,7 @@ export class UserService {
   getOrCreateGuestUserId(): string {
     let userId = localStorage.getItem(this.userIdKey);
     if (!userId) {
-      userId = uuidv4(); // Genera un identificador único
+      userId = "3e7570d8-e320-4430-9d02-a53c091f7bbf"; // ID del usuario predeterminado
       localStorage.setItem(this.userIdKey, userId);
     }
     return userId;

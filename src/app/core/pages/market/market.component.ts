@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import {toSignal} from '@angular/core/rxjs-interop'
+import { marketService } from './data-access/market.service';
 
 
 @Component({
@@ -15,5 +16,8 @@ import {toSignal} from '@angular/core/rxjs-interop'
 })
 export class MarketComponent {
 
+  marketService = inject(marketService)
+
+  users = toSignal(this.marketService.getUsers());
   
 }

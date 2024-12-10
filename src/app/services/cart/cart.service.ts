@@ -14,6 +14,7 @@ export class CartService {
 
   private baseUrlCarts = `${environment.baseUrl}/carts`; // Ruta base para carritos
   private baseUrlCartItems = `${environment.baseUrl}/cart-items`; // Ruta base para ítems del carrito
+  private Url: string = environment.baseUrl;
   private cart: CartItem[] = []; // Almacén temporal del carrito en memoria
 
   private cartItemCountSubject = new BehaviorSubject<number>(0); // Contador de productos en el carrito
@@ -24,6 +25,7 @@ export class CartService {
   // Obtener o crear un carrito para el usuario actual (guestUser o realUser)
   loadOrCreateCart(): Observable<Cart> {
   const userId = this.userService.getOrCreateGuestUserId(); // Obtiene el ID de usuario actual (invitado o real)
+  console.log('Intentando cargar o crear carrito para UserID:', userId);
   return this.getCartByUserId(userId).pipe(
     catchError((err) => {
       if (err.status === 404) {
@@ -42,12 +44,14 @@ export class CartService {
 
   // Obtener el carrito de un usuario
   getCartByUserId(userId: string): Observable<Cart> {
-    return this.http.get<Cart>(`${this.baseUrlCarts}/user/${userId}`);
+    return this.http.get<Cart>(`${this.Url}/carts/user/${userId}`);
+
+
   }
 
   // Crear un carrito para un usuario
   createCart(userId: string): Observable<Cart> {
-    return this.http.post<Cart>(`${this.baseUrlCarts}/user/${userId}`, {}).pipe(
+    return this.http.post<Cart>(`${this.Url}/carts/user/${userId}`, {}).pipe(
       tap((cart) => {
         console.log('Nuevo carrito creado:', cart);
       })
@@ -56,7 +60,7 @@ export class CartService {
 
   // Obtener los ítems del carrito
   getCartItems(cartId: string): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(`${this.baseUrlCartItems}/${cartId}`).pipe(
+    return this.http.get<CartItem[]>(`${this.Url}/cart-items/${cartId}`).pipe(
       tap((items) => {
         this.cart = items; // Sincroniza con el almacenamiento en memoria
         this.updateCartItemCount();//actualiza el contador
@@ -73,7 +77,7 @@ export class CartService {
       return this.updateCartItem(cartId, existingItem.productId, existingItem.quantity + quantity);
     } else {
       // Si el producto no está, agrégalo
-      return this.http.post<CartItem>(`${this.baseUrlCartItems}/${cartId}`, {
+      return this.http.post<CartItem>(`${this.Url}/cart-items/${cartId}`, {
         productId: product.id,
         quantity,
       }).pipe(
@@ -87,7 +91,7 @@ export class CartService {
 
   // Actualizar la cantidad de un producto
   updateCartItem(cartId: string, productId: string, quantity: number): Observable<CartItem> {
-    return this.http.patch<CartItem>(`${this.baseUrlCartItems}/${cartId}/${productId}`, { quantity }).pipe(
+    return this.http.patch<CartItem>(`${this.Url}/cart-items/${cartId}/${productId}`, { quantity }).pipe(
       tap(() => {
         const itemIndex = this.cart.findIndex((item) => item.productId === productId);
         if (itemIndex > -1) {
@@ -100,7 +104,7 @@ export class CartService {
 
   // Eliminar un producto del carrito
   removeFromCart(cartId: string, productId: string): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrlCartItems}/${cartId}/${productId}`).pipe(
+    return this.http.delete<void>(`${this.Url}/cart-items/${cartId}/${productId}`).pipe(
       tap(() => {
         this.cart = this.cart.filter((item) => item.productId !== productId); // Elimina en memoria
         this.updateCartItemCount(); // Actualiza el contador
@@ -141,7 +145,7 @@ export class CartService {
 
   migrateCartToRealUser(realUserId: string): void {
     const guestUserId = this.userService.getOrCreateGuestUserId();
-    this.http.post(`${this.baseUrlCarts}/migrate`, { guestUserId, realUserId }).subscribe({
+    this.http.post(`${this.Url}/cart-items/migrate`, { guestUserId, realUserId }).subscribe({
       next: () => {
         this.userService.updateToRealUser(realUserId); // Actualiza al usuario real
         console.log('Cart migrated to real user');

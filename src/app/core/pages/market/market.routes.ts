@@ -8,7 +8,7 @@ import { publicGuard } from "../../../shared/guards/auth.guard";
 export const marketRoutes: Routes = [
     {
         path: 'market',
-        //canActivate:[publicGuard()],
+        
         component: MarketComponent,
         children: [
             {
@@ -18,6 +18,7 @@ export const marketRoutes: Routes = [
             },
             {
                 path: 'product',
+                //canActivate:[publicGuard()],
                 component: MarketProductsComponent
             },
             {

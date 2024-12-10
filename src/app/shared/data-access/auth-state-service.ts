@@ -20,7 +20,7 @@ export class AuthStateService {
         let currentSession: Session | null = null;
         const maybeSession = this._storageService.get<Session>('session');
 
-        console.log('recuperando session: ',maybeSession);
+        console.log(maybeSession);
 
         if (maybeSession !== null) {
             if (this._isValidSession(maybeSession)) {
